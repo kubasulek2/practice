@@ -349,5 +349,9 @@ console.log(me);
 // }
 //
 // const myStack = new Stack();
-
+$(()=>{
+  $('.example .button').on('click', function(){
+    $(this).parents('.example').toggleClass('is-transitioned');
+  });
+});
 
