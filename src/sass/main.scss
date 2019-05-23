@@ -1,6 +1,15 @@
-svg{
-  background: indianred;
-  circle{
-    border: 1px solid black;background: transparent;
+.wrapper{
+  width: 200px;
+  border: 1px salmon ;
+  .box{
+    width: 200px;
+    height: 200px;
+    background: #aaa;
+    transform-origin: bottom left;
+    transition: transform .5s;
+    pointer-events: none;
+  }
+  &:hover .box{
+    transform: rotate(60deg);
   }
 }
