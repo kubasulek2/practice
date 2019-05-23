@@ -350,8 +350,9 @@ console.log(me);
 //
 // const myStack = new Stack();
 $(()=>{
+  let stage = 0;
   $('.example .button').on('click', function(){
-    $(this).parents('.example').toggleClass('is-transitioned');
+    $(this).parents('.example').toggleClass('stage-1');
   });
 });
 

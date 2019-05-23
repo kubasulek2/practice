@@ -6,49 +6,52 @@ body {
 
 .slides {
   margin: 50px auto;
-  max-width: 600px;
+  width: 600px;
 }
 
-.example {
-  background: #eee;
-  padding: 30px;
-}
-
-.example.no-padding {
-  padding: 0px;
-}
-
-.example {
-  overflow: hidden;
-}
 
 .example .belt {
-  width: 200%;
+  width: 100%;
+  height: 400px;
   display: flex;
   transition: transform 1s ease-in-out;
-  perspective: 1000px;
+  perspective: 2000px;
 }
 
 .example .state {
-  width: 50%;
+  width: 100%;
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  transition: all 1s ease-in-out;
+  position: absolute;
+  backface-visibility: hidden;
 }
 
 .example .state-1 {
   background: #999;
-  transition: transform 1s ease-in-out;
-  transform-origin: right center ;
+  transform-origin: right center;
+
 }
 
 .example .state-2 {
   background: #aaa;
-  //box-shadow: 0 0 0 black;
-  z-index: 2;
-  transition: all 600ms ease-in-out;
+  transform-origin: left;
+  transform: translateX(100%)rotateY(90deg);
+
+}
+.example .state-3 {
+  background: #999;
+  transform-origin: left;
+  transform: translateX(100%)rotateY(90deg);
+
+}
+.example .state-4 {
+  background: #aaa;
+  transform-origin: left;
+  transform: translateX(100%)rotateY(90deg);
+
 }
 
 .example .button {
@@ -56,9 +59,6 @@ body {
   padding: 20px;
   border: none;
   margin-bottom: 20px;
-}
-
-.example .button {
   background: rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -74,10 +74,9 @@ body {
   box-shadow: 0 25px 15px -15px rgba(0, 0, 0, 0.5);
 }
 
-.example.is-transitioned .belt{
-  transform: translateX(-50%);
+.example.stage-1 .state-1 {
+  transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
 }
-
-.example.is-transitioned .state-1 {
-  transform: scale(0.8) rotateY(-90deg)
+.example.stage-1 .state-2 {
+  transform: /*scale(0.8)*/ rotateY(0deg)
 }
