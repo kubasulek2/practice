@@ -1,76 +1,39 @@
-.road{
-  width: 70%;
-  border-top: 12px dotted royalblue;
+body{
+  height: 100vh;
+  box-sizing: border-box;
+}
+.btn{
+  height: 60px;
+  line-height: 60px;
+  width: 200px;
+  font-family: Purisa;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin: 150px auto;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 8px;
   position: relative;
-  margin: 50px;
-  .pacman {
+  overflow: hidden;
+  transition: .5s all;
+  cursor: pointer;
+  &:after{
+    content: "";
+    top: 0;
+    left: 0;
+    display: block;
     position: absolute;
-    animation: go 3s linear infinite;
-
-
-
-    &:before, &:after {
-      content: "";
-      border-radius: 50%;
-      display: block;
-      border: 30px solid plum;
-      height: 0;
-      width: 0;
-      position: absolute;
-      top: -35px;
-      transform: translateX(50%);
-    }
-    &:before{
-      border-right-color: transparent;
-      border-top-color: transparent;
-      animation: eat .2s linear infinite alternate;
-
-    }
-    &:after {
-      top: -34px;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      animation: eat2 .2s linear infinite alternate;
-
-    }
-  }
-}
-
-@keyframes eat {
-  0%{
-    transform: rotateZ(0);
-  }
-
-  100%{
-    transform: rotateZ(-40deg);
-  }
-}
-
-@keyframes eat2{
-  0%{
-    transform: rotateZ(0);
-  }
-
-  100%{
-    transform: rotateZ(40deg);
-  }
-}
-@keyframes go{
-  0%{
-     left: 0;
-    transform: scaleX(1);
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
+    background: #ffb698;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    transition: all .5s;
+    z-index: -1;
 
   }
-  49%{
-    transform: scaleX(1);
-  }
-  50%{
-    left:100%;
-    transform: scaleX(-1);
-  }
-  100%{
-    left:0;
-    transform: scaleX(-1);
-
+  &:hover:after{
+  transform: rotate(0)
   }
 }
