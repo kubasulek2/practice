@@ -1,109 +1,99 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  color: rgba(0, 0, 0, 0.87);
-  -webkit-font-smoothing: antialiased;
-}
-
-.slides {
-  margin: 50px auto;
-  width: 600px;
-}
-
-
-.example .belt {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  perspective: 2000px;
-}
-
-.example .state {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 1s ease-in-out;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.example .state-1 {
-  background: #999;
-  transform-origin: right center;
-
-}
-
-.example .state-2 {
-  background: #aaa;
-  transform-origin: left;
-  transform: translateX(100%)rotateY(90deg);
-
-}
-.example .state-3 {
-  background: #999;
-  transform-origin: left;
-  transform: translateX(100%)rotateY(90deg);
-
-}
-.example .state-4 {
-  background: #aaa;
-  transform-origin: left;
-  transform: translateX(100%)rotateY(90deg);
-
-}
-
-.example .button {
-  width: 300px;
-  padding: 20px;
-  border: none;
-  margin-bottom: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.8);
+nav {
+  padding: 50px;
   text-align: center;
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+nav > ul > li {
+  float: left;
+  width: 150px;
+  height: 65px;
+  line-height: 65px;
+  position: relative;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s cubic-bezier(0.36,-0.67, 0.58, 1.93);
 }
 
-.example .button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 25px 15px -15px rgba(0, 0, 0, 0.5);
+nav > ul > li:hover {
+  background: #d5d5d5;
+  border-radius: 5px;
 }
 
-.example.stage-1 .state-1 {
-  transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
+ul.drop-menu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+  //for 3d effects
+  perspective: 1000px;
 }
-.example.stage-1 .state-2 {
-  transform: /*scale(0.8)*/ rotateY(0deg)
+
+ul.drop-menu li {
+  background: #666;
+  color: rgba(255, 255, 255, 0.7);
 }
-.example.stage-2{
-  .state-2{
-    transform-origin: right center;
-    transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
-  }
-  .state-3{
 
-    transform: rotateY(0deg);
-  }
+ul.drop-menu li:hover {
+  background: #606060;
+}
+
+ul.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+ul.drop-menu li {
+  display: none;
+}
+li:hover > ul.drop-menu li {
+  display: block;
+  opacity: 0;
+  animation: menu .3s ease forwards;
+
+  //do roznych transformacji
+  transform-origin: center ;
 
 }
-.example.stage-3{
-  .state-1{
-    transform-origin: right;
-  }
-  .state-2{
-    transform-origin: left;
-  }
-  .state-3{
-    transform-origin: right center;
-    transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
-  }
-  .state-4{
 
-    transform: rotateY(0deg);
-  }
+li:hover > ul.drop-menu li:nth-child(2){
+animation-delay: 0.1s;
+}
+li:hover > ul.drop-menu li:nth-child(3){
+animation-delay: 0.2s;
+}
+li:hover > ul.drop-menu li:nth-child(4){
+animation-delay: 0.3s;
+}
+@keyframes menu {
+  0%{
+    opacity: 0;
 
+    // rozne style do wyboru
+    //transform: translateX(-30px);
+    //transform: rotateY(-90deg);
+    //transform: rotateZ(-90deg);
+    transform: rotateX(90deg) scale(.3);
+
+  }
+  70%{
+    transform: rotateX(27deg)scale(1.3);
+  }
+  100%{
+    opacity: 1;
+    //transform: translateX(0);
+    //transform: rotateY(0deg);
+    //transform: rotateZ(0deg);
+    transform: rotateX(0deg) scale(1);
+  }
 }
