@@ -11,76 +11,120 @@ body{
   justify-content: center;
   align-items: center;
 
-  .container{
+  .container {
+    position: relative;
     width: 600px;
     height: 600px;
-    position: relative;
-    //overflow: hidden;
     font-family: Lato;
     font-size: 35px;
     text-transform: uppercase;
     color: white;
-
-
-
-    &:before{
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: "";
-      display: block;
+    overflow: hidden;
+    .wrapper{
       width: 100%;
       height: 100%;
-      background:  url("../birds-979262_640.jpg") center center/ contain no-repeat;
-      transition: all 1s;
-    }
-    &:hover:before{
-      transform: scale(1.25) rotate(20deg);
-    }
-  }
-  .caption{
-    position: absolute;
-    //transform: translateY(100%);
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0);
-    transition: all .5s .3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .container:hover .caption{
-    transform: translateY(0);
-    background: rgba(0,0,0,.5);
-  }
-
-  .skills{
-    width: 100%;
-
-
-    li{
-      //overflow: hidden;
-      margin: 20px;
       position: relative;
-      width: 50%;
-      height: 15%;
-      color: rgba(0,0,0,0);
+      transition: all .4s;
 
-      .list-item{
+      &:before {
         position: absolute;
         top: 0;
         left: 0;
-        color: red;
-        transform: translate(-20rem, 100px) ;
-        transition: all .5s 1s;
-
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url("../birds-979262_640.jpg") center center/ contain no-repeat;
+        transition: all 1s;
+      }
+      &:hover:before {
+        transform: scale(1.25);
       }
     }
-  }
-  .container:hover .list-item{
-    transform: translate(0, 0) rotate(0);
-  }
 
+
+
+
+    .caption {
+      position: absolute;
+      transform: translateY(100%);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      transition: all .5s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:hover .caption {
+      transform: translateY(0);
+      background: rgba(0, 0, 0, .5);
+    }
+
+    .skills {
+      width: 100%;
+
+      li {
+
+        margin: 20px;
+        position: relative;
+        width: 50%;
+        height: 15%;
+        color: rgba(0, 0, 0, 0);
+
+        .list-item {
+          position: absolute;
+          width: 100%;
+          transform-origin: left bottom;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          color: white;
+          transform: translateX(-20rem) rotate(-40deg);
+          transition: .3s ease-out;
+
+        }
+        &:first-child .list-item {
+          transition-delay: 1s;
+        }
+        &:nth-child(2) .list-item {
+          transition-delay: 1.2s;
+        }
+        &:nth-child(3) .list-item {
+          transition-delay: 1.4s;
+        }
+        &:last-child .list-item {
+          transition-delay: 1.6s;
+        }
+      }
+    }
+    .caption-bottom{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20%;
+      background: #2F363D;
+      transform: translateY(100%);
+      transition: all .4s;
+    }
+
+    &:hover{
+      .wrapper{
+        transform: translateY(-20%);
+      }
+
+      .caption-bottom{
+        transform: translateY(0);
+      }
+      .wrapper .caption .skills li .list-item {
+        transform: translate(0) rotate(0);
+        opacity: 1;
+      }
+    }
+
+
+  }
 }
+
