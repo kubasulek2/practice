@@ -49,7 +49,7 @@ body{
     }
     &:hover{
       color: white;
-      //border-color: white;
+
     }
   }
 
@@ -72,6 +72,8 @@ body{
   &.btn-3{
     border-color: #3c1321;
     color: #3c1321;
+    letter-spacing: -2px;
+
     &:before{
       content: "";
       top: 0;
@@ -97,6 +99,33 @@ body{
     }
     &:hover{
       color: #F9F9F6;
+      letter-spacing: 2px;
+
     }
   }
+
+  &.btn-4{
+    //overflow: initial;
+    background: #262626;
+    color: #f1f1f1;
+    border-color: white;
+    transition: initial;
+
+    &:after{
+      z-index: 1;
+      opacity: .6;
+      background: white;
+      height: 20%;
+      transform: translate(-90%)rotate(45deg);
+      transition: all .2s;
+    }
+    &:hover:after{
+      transform: translateX(60%) rotate(45deg);
+    }
+    &:hover{
+      background: #ff5719;
+    }
+  }
+
+
 }
