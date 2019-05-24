@@ -1,2 +1,2 @@
-$(()=>{$(".example .button").on("click",function(){$(this).parents(".example").toggleClass("stage-1")})});
+$(()=>{let e=0;$(".example .button").on("click",function(){e++,$(this).parents(".example").toggleClass(`stage-${e}`)})});
 //# sourceMappingURL=main.js.map

@@ -352,7 +352,8 @@ console.log(me);
 $(()=>{
   let stage = 0;
   $('.example .button').on('click', function(){
-    $(this).parents('.example').toggleClass('stage-1');
+    stage++
+    $(this).parents('.example').toggleClass(`stage-${stage}`);
   });
 });
 
