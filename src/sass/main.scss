@@ -14,7 +14,6 @@ body {
   width: 100%;
   height: 400px;
   display: flex;
-  transition: transform 1s ease-in-out;
   perspective: 2000px;
 }
 
@@ -24,7 +23,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 1s ease-in-out;
+  transition: transform 1s ease-in-out;
   position: absolute;
   backface-visibility: hidden;
 }
@@ -82,10 +81,29 @@ body {
 }
 .example.stage-2{
   .state-2{
-    transform-origin: right;
+    transform-origin: right center;
     transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
   }
   .state-3{
+
     transform: rotateY(0deg);
   }
+
+}
+.example.stage-3{
+  .state-1{
+    transform-origin: right;
+  }
+  .state-2{
+    transform-origin: left;
+  }
+  .state-3{
+    transform-origin: right center;
+    transform: /*scale(0.8)*/ translateX(-100%) rotateY(-90deg)
+  }
+  .state-4{
+
+    transform: rotateY(0deg);
+  }
+
 }
