@@ -1,15 +1,18 @@
 body{
   height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn{
   height: 60px;
   line-height: 60px;
   width: 200px;
-  font-family: Purisa;
+  font-family: Helvetica;
   text-transform: uppercase;
   font-size: 30px;
-  margin: 150px auto;
+  margin: 1rem;
   text-align: center;
   border: 2px solid black;
   border-radius: 8px;
@@ -34,6 +37,10 @@ body{
 
   }
   &:hover:after{
-  transform: rotate(0)
+  transform: rotate(0);
+  }
+  &:hover{
+    color: white;
+    border-color: white;
   }
 }
