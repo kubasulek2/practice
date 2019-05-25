@@ -9,63 +9,45 @@
 body {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  background: #26DE81;
-  font-family: Roboto, sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
+  background: #3f3f3f;
+}
+
+.btn {
   color: white;
-  font-size: 100px;
-  line-height: 100px;
+  font-family: sans-serif;
+  font-size: 40px;
+  border: 3px solid #f6685e;
+  padding: 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
 
-  p{
-    text-shadow: 1px 1px 0 #efefef,
-    2px 2px 0 #efefef,
-    3px 3px 0  #efefef,
-    4px 4px 0  #efefef,
-    5px 5px 0  #efefef,
-    6px 6px 0  #efefef,
-    6px 30px 5px rgba(0,0,0,.1);
+.btn:before {
+  content: '';
+  background-color: #f6685e;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transform: skew(-15deg);
+  animation: moving .7s linear infinite;
+  transition: all .5s;
+}
 
-  }
+@keyframes moving {
 
-  .btn {
-    cursor: pointer;
-    color: #efefef;
-    font-size: 50px;
-    line-height: 50px;
-    font-weight: inherit;
-    padding: 1.5rem 3rem;
-    background: #DE535E;
-    border-radius: 5px;
-    box-shadow: 1px 1px 0 #c74a54,
-    2px 2px 0 #c74a54,
-    3px 3px 0 #c74a54,
-    4px 4px 0 #c74a54,
-    5px 5px 0 #c74a54;
-    transform: translateY(400px) ;
+  from { left: -120px }
 
-
-    &:hover{
-      transform: translate(2px, 402px);
-      box-shadow: 1px 1px 0 #c74a54,
-      2px 2px 0 #c74a54, 3px 3px 0 #c74a54
-
-    }
-    &:hover + p{
-      animation: ring .05s linear infinite alternate;
-    }
-  }
-
+  to 	{ left: 100% }
 
 }
-@keyframes ring {
-  from{
-    transform: rotate(4deg);
-  }
-  to{
-    transform: rotate(-3deg);
-  }
+
+.btn:hover:before {
+  width: 100%;
+  transform: skew(0deg);
+  animation: none;
 }
