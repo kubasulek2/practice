@@ -8,171 +8,50 @@
 body{
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #3b3b3b;
+  ul{
+    display: flex;
+    min-height: 150px;
+    min-width: 400px;
+    li{
+      padding: .4rem;
+      font-size: 100px;
+      font-family: Roboto, sans-serif;
+      font-weight: 600;
+      color: white;
+      transition: all 2s;
 
-  .container {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    font-family: Lato;
-    font-size: 35px;
-    text-transform: uppercase;
-    color: white;
-    overflow: hidden;
-    .wrapper{
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transition: all .4s;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: url("../birds-979262_640.jpg") center center/ contain no-repeat;
-        transition: all 1s;
-      }
-      &:hover:before {
-        //transform: scale(1.25);
-      }
     }
-
-
-
-
-    .caption {
-      position: absolute;
-      //transform: translateY(100%);
-      width: 100%;
-      height: 100%;
+    &:hover li{
+      transform: rotate(45deg) translateY(-200px);
       opacity: 0;
-      background: rgba(0, 0, 0, 0);
-      transition: all .5s;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      filter: blur(20px);
+    }
+    li:nth-child(1){
+      transition-delay: 0;
     }
 
-    &:hover .caption {
-      //transform: translateY(0);
-      background: rgba(0, 0, 0, .5);
-      opacity: 1;
+    li:nth-child(2){
+      transition-delay: .4s;
     }
-
-    .skills {
-      width: 100%;
-
-      li {
-
-        margin: 20px;
-        position: relative;
-        width: 50%;
-        height: 15%;
-        color: rgba(0, 0, 0, 0);
-
-        .list-item {
-          position: absolute;
-          width: 100%;
-          transform-origin: left bottom;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          color: white;
-          transform: translateX(-20rem) rotate(-40deg);
-          transition: .3s ease-out;
-
-        }
-        &:first-child .list-item {
-          transition-delay: 1s;
-        }
-        &:nth-child(2) .list-item {
-          transition-delay: 1.2s;
-        }
-        &:nth-child(3) .list-item {
-          transition-delay: 1.4s;
-        }
-        &:last-child .list-item {
-          transition-delay: 1.6s;
-        }
-      }
+    li:nth-child(3){
+      transition-delay: .8s;
     }
-    .caption-bottom{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(47, 54, 61, .8);
-      transform: translateY(100%);
-      transition: all .4s;
+    li:nth-child(4){
+      transition-delay: 1.2s;
     }
-
-    &:hover{
-      .wrapper{
-        transform: translateY(-20%);
-      }
-
-      .caption-bottom{
-        transform: translateY(0);
-      }
-      .wrapper .caption .skills li .list-item {
-        transform: translate(0) rotate(0);
-        opacity: 1;
-      }
+    li:nth-child(5){
+      transition-delay: 1.6s;
     }
-    .btn{
-      height: 70px;
-      line-height: 70px;
-      width: 200px;
-      font-family: Lato, sans-serif;
-      text-transform: uppercase;
-      font-size: 30px;
-      margin: 1rem;
-      text-align: center;
-      border: 3px solid black;
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
-      transition: .5s all;
-      cursor: pointer;
+  }
 
-      &:after{
-        content: "";
-        top: 0;
-        left: 0;
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        transition: all .5s;
-        z-index: -1;
-      }
-      &.btn-1{
-
-        &:after{
-          transform-origin: right top;
-          transform: rotate(-90deg);
-          background: #ffb698;
-
-        }
-        &:hover:after{
-          transform: rotate(0);
-        }
-        &:hover{
-          color: white;
-          border-color: transparent;
-
-        }
-      }
-    }
+  .red{
+    width: 500px;
+    height: 300px;
+    background: indianred;
   }
 }
 
