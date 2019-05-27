@@ -13,41 +13,69 @@ body {
   align-items: center;
   background: #3f3f3f;
 }
+ul {
+  font-family: Roboto, sans-serif;
+  font-size: 150px;
+  display: flex;
+  text-transform: uppercase;
+  color: #5b5b5b;
+  &:after {
+    content: "UP";
+    margin-left: 1.5rem;
+    color: #3f3f3f;
+    animation: bulb 5s linear infinite;
+  }
+  li {
+    animation: light 1s linear infinite;
+    &:nth-child(6) {
+      margin-left: 1.5rem;
+    }
 
-.btn {
-  color: white;
-  font-family: sans-serif;
-  font-size: 40px;
-  border: 3px solid #f6685e;
-  padding: 40px 80px;
-  position: relative;
-  overflow: hidden;
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * .15}s;
+      }
+    }
+  }
+}
+@keyframes light {
+  0%{
+    color: #5b5b5b;
+    text-shadow: none;
+
+  }
+  90%{
+    color: #5b5b5b;
+    text-shadow: none;
+  }
+  100%{
+    color: #fff900;
+    text-shadow:
+            0 0 2px rgba(255, 249, 0, .9),
+            0 0 12px rgba(255, 249, 0, .7),
+            0 0 50px #ff6c00;
+  }
 }
 
-.btn:before {
-  content: '';
-  background-color: #f6685e;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  transform: skew(-15deg);
-  animation: moving .7s linear infinite;
-  transition: all .5s;
-}
-
-@keyframes moving {
-
-  from { left: -120px }
-
-  to 	{ left: 100% }
-
-}
-
-.btn:hover:before {
-  width: 100%;
-  transform: skew(0deg);
-  animation: none;
+@keyframes bulb {
+  0%{
+    text-shadow: none;
+    color: rgba(255,255,153,0);
+  }
+  25%{
+    text-shadow: 0 0 6px rgba(255,255,153,.4), 0 0 25px rgba(255,165,0, .3);
+    color: rgba(255,255,183,.5);
+  }
+  50%{
+    text-shadow: 0 0 10px rgba(255,255,153,.8), 0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+  70%{
+    text-shadow: 0 0 10px rgba(255,255,153,.8), 0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+  73%{
+    text-shadow: none;
+    color: rgba(255,255,153,0);
+  }
 }
