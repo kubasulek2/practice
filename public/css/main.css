@@ -20,11 +20,311 @@ html {
   background: #eee;
 }
 
-.viewport #face {
+.viewport .face {
   width: 300px;
   height: 200px;
   background: #4169e1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  -webkit-transform-origin: 50% 50% -1000px;
+  transform-origin: 50% 50% -1000px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.viewport .face:nth-child(1) {
+  -webkit-transform: rotateY(40deg);
+  transform: rotateY(40deg);
+  -webkit-animation: rotate1 3s linear infinite;
+  animation: rotate1 3s linear infinite;
+}
+
+.viewport .face:nth-child(2) {
+  -webkit-transform: rotateY(80deg);
+  transform: rotateY(80deg);
+  -webkit-animation: rotate2 3s linear infinite;
+  animation: rotate2 3s linear infinite;
+}
+
+.viewport .face:nth-child(3) {
+  -webkit-transform: rotateY(120deg);
+  transform: rotateY(120deg);
+  -webkit-animation: rotate3 3s linear infinite;
+  animation: rotate3 3s linear infinite;
+}
+
+.viewport .face:nth-child(4) {
+  -webkit-transform: rotateY(160deg);
+  transform: rotateY(160deg);
+  -webkit-animation: rotate4 3s linear infinite;
+  animation: rotate4 3s linear infinite;
+}
+
+.viewport .face:nth-child(5) {
+  -webkit-transform: rotateY(200deg);
+  transform: rotateY(200deg);
+  -webkit-animation: rotate5 3s linear infinite;
+  animation: rotate5 3s linear infinite;
+}
+
+.viewport .face:nth-child(6) {
+  -webkit-transform: rotateY(240deg);
+  transform: rotateY(240deg);
+  -webkit-animation: rotate6 3s linear infinite;
+  animation: rotate6 3s linear infinite;
+}
+
+.viewport .face:nth-child(7) {
+  -webkit-transform: rotateY(280deg);
+  transform: rotateY(280deg);
+  -webkit-animation: rotate7 3s linear infinite;
+  animation: rotate7 3s linear infinite;
+}
+
+.viewport .face:nth-child(8) {
+  -webkit-transform: rotateY(320deg);
+  transform: rotateY(320deg);
+  -webkit-animation: rotate8 3s linear infinite;
+  animation: rotate8 3s linear infinite;
+}
+
+.viewport .face:nth-child(9) {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  -webkit-animation: rotate9 3s linear infinite;
+  animation: rotate9 3s linear infinite;
+}
+
+.viewport .face:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cd5c5c;
+  top: 12px;
+  left: 145px;
+}
+
+@-webkit-keyframes rotate1 {
+  from {
+    -webkit-transform: rotateY(40deg);
+    transform: rotateY(40deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(400deg);
+    transform: rotateY(400deg);
+  }
+}
+
+@keyframes rotate1 {
+  from {
+    -webkit-transform: rotateY(40deg);
+    transform: rotateY(40deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(400deg);
+    transform: rotateY(400deg);
+  }
+}
+
+@-webkit-keyframes rotate2 {
+  from {
+    -webkit-transform: rotateY(80deg);
+    transform: rotateY(80deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(440deg);
+    transform: rotateY(440deg);
+  }
+}
+
+@keyframes rotate2 {
+  from {
+    -webkit-transform: rotateY(80deg);
+    transform: rotateY(80deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(440deg);
+    transform: rotateY(440deg);
+  }
+}
+
+@-webkit-keyframes rotate3 {
+  from {
+    -webkit-transform: rotateY(120deg);
+    transform: rotateY(120deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(480deg);
+    transform: rotateY(480deg);
+  }
+}
+
+@keyframes rotate3 {
+  from {
+    -webkit-transform: rotateY(120deg);
+    transform: rotateY(120deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(480deg);
+    transform: rotateY(480deg);
+  }
+}
+
+@-webkit-keyframes rotate4 {
+  from {
+    -webkit-transform: rotateY(160deg);
+    transform: rotateY(160deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(520deg);
+    transform: rotateY(520deg);
+  }
+}
+
+@keyframes rotate4 {
+  from {
+    -webkit-transform: rotateY(160deg);
+    transform: rotateY(160deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(520deg);
+    transform: rotateY(520deg);
+  }
+}
+
+@-webkit-keyframes rotate5 {
+  from {
+    -webkit-transform: rotateY(200deg);
+    transform: rotateY(200deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(560deg);
+    transform: rotateY(560deg);
+  }
+}
+
+@keyframes rotate5 {
+  from {
+    -webkit-transform: rotateY(200deg);
+    transform: rotateY(200deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(560deg);
+    transform: rotateY(560deg);
+  }
+}
+
+@-webkit-keyframes rotate6 {
+  from {
+    -webkit-transform: rotateY(240deg);
+    transform: rotateY(240deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(600deg);
+    transform: rotateY(600deg);
+  }
+}
+
+@keyframes rotate6 {
+  from {
+    -webkit-transform: rotateY(240deg);
+    transform: rotateY(240deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(600deg);
+    transform: rotateY(600deg);
+  }
+}
+
+@-webkit-keyframes rotate7 {
+  from {
+    -webkit-transform: rotateY(280deg);
+    transform: rotateY(280deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(640deg);
+    transform: rotateY(640deg);
+  }
+}
+
+@keyframes rotate7 {
+  from {
+    -webkit-transform: rotateY(280deg);
+    transform: rotateY(280deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(640deg);
+    transform: rotateY(640deg);
+  }
+}
+
+@-webkit-keyframes rotate8 {
+  from {
+    -webkit-transform: rotateY(320deg);
+    transform: rotateY(320deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(680deg);
+    transform: rotateY(680deg);
+  }
+}
+
+@keyframes rotate8 {
+  from {
+    -webkit-transform: rotateY(320deg);
+    transform: rotateY(320deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(680deg);
+    transform: rotateY(680deg);
+  }
+}
+
+@-webkit-keyframes rotate9 {
+  from {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(720deg);
+    transform: rotateY(720deg);
+  }
+}
+
+@keyframes rotate9 {
+  from {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(720deg);
+    transform: rotateY(720deg);
+  }
 }
 
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQUE7RUFDQTtFQUNBO0VBQ0E7OztBQUlGOztFQUNFO0VBQ0E7OztBQUVGO0VBQ0U7RUFDQTtFQUNBO0VBQUE7RUFDQTs7O0FBSkY7RUFPSTtFQUNBO0VBQ0E7OztBQUFBIiwic291cmNlc0NvbnRlbnQiOlsiKntcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG5cblxuaHRtbCwgYm9keSB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG59XG4udmlld3BvcnR7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG4gIHBlcnNwZWN0aXZlOiA1MDBweDtcbiAgYmFja2dyb3VuZDogI2VlZTtcblxuICAjZmFjZXtcbiAgICB3aWR0aDogMzAwcHg7XG4gICAgaGVpZ2h0OiAyMDBweDtcbiAgICBiYWNrZ3JvdW5kOiByb3lhbGJsdWU7XG4gIH1cblxufSJdLCJmaWxlIjoibWFpbi5jc3MifQ== */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQUE7RUFDQTtFQUNBO0VBQ0E7OztBQUlGOztFQUNFO0VBQ0E7OztBQUVGO0VBQ0U7RUFDQTtFQUNBO0VBQUE7RUFDQTs7O0FBSkY7RUFPSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFBQTtFQUNBO0VBQUE7OztBQWhCSjtFQW1CUTtFQUFBO0VBQ0E7RUFBQTs7O0FBcEJSO0VBbUJRO0VBQUE7RUFDQTtFQUFBOzs7QUFwQlI7RUFtQlE7RUFBQTtFQUNBO0VBQUE7OztBQXBCUjtFQW1CUTtFQUFBO0VBQ0E7RUFBQTs7O0FBcEJSO0VBbUJRO0VBQUE7RUFDQTtFQUFBOzs7QUFwQlI7RUFtQlE7RUFBQTtFQUNBO0VBQUE7OztBQXBCUjtFQW1CUTtFQUFBO0VBQ0E7RUFBQTs7O0FBcEJSO0VBbUJRO0VBQUE7RUFDQTtFQUFBOzs7QUFwQlI7RUFtQlE7RUFBQTtFQUNBO0VBQUE7OztBQXBCUjtFQXlCTTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQU1KO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUxKO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUxKO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUxKO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUxKO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUxKO0VBQ0U7SUFDRTtJQUFBOzs7RUFFRjtJQUNFO0lBQUE7Ozs7QUFMSjtFQUNFO0lBQ0U7SUFBQTs7O0VBRUY7SUFDRTtJQUFBOzs7O0FBTEo7RUFDRTtJQUNFO0lBQUE7OztFQUVGO0lBQ0U7SUFBQTs7OztBQUFBIiwic291cmNlc0NvbnRlbnQiOlsiKntcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG5cblxuaHRtbCwgYm9keSB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG59XG4udmlld3BvcnR7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG4gIHBlcnNwZWN0aXZlOiA1MDBweDtcbiAgYmFja2dyb3VuZDogI2VlZTtcblxuICAuZmFjZXtcbiAgICB3aWR0aDogMzAwcHg7XG4gICAgaGVpZ2h0OiAyMDBweDtcbiAgICBiYWNrZ3JvdW5kOiByb3lhbGJsdWU7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICBtYXJnaW4tdG9wOiAtMTAwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IC0xNTBweDtcbiAgICB0cmFuc2Zvcm0tb3JpZ2luOiA1MCUgNTAlIC0xMDAwcHg7XG4gICAgYmFja2ZhY2UtdmlzaWJpbGl0eTogaGlkZGVuO1xuICAgIEBmb3IgJGkgZnJvbSAxIHRocm91Z2ggOSB7XG4gICAgICAmOm50aC1jaGlsZCgjeyRpfSkge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZVkoI3skaSAqIDQwfWRlZyk7XG4gICAgICAgIGFuaW1hdGlvbjogcm90YXRlI3skaX0gM3MgbGluZWFyIGluZmluaXRlO1xuICAgICAgfVxuICAgIH1cblxuICAgICY6YWZ0ZXJ7XG4gICAgICBjb250ZW50OiAnJztcbiAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDEwcHg7XG4gICAgICBoZWlnaHQ6IDEwcHg7XG4gICAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgICBiYWNrZ3JvdW5kOiBpbmRpYW5yZWQ7XG4gICAgICB0b3A6IDEycHg7XG4gICAgICBsZWZ0OiAxNDVweDtcbiAgICB9XG4gIH1cblxufVxuQGZvciAkaSBmcm9tIDEgdGhyb3VnaCA5IHtcbiAgQGtleWZyYW1lcyByb3RhdGUjeyRpfSB7XG4gICAgZnJvbXtcbiAgICAgIHRyYW5zZm9ybTogcm90YXRlWSgjeyRpICogNDB9ZGVnKTtcbiAgICB9XG4gICAgdG97XG4gICAgICB0cmFuc2Zvcm06IHJvdGF0ZVkoI3skaSo0MCArMzYwfWRlZyk7XG4gICAgfVxuICB9XG59XG4iXSwiZmlsZSI6Im1haW4uY3NzIn0= */

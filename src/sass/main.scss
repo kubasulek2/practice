@@ -16,10 +16,45 @@ html, body {
   perspective: 500px;
   background: #eee;
 
-  #face{
+  .face{
     width: 300px;
     height: 200px;
     background: royalblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    transform-origin: 50% 50% -1000px;
+    backface-visibility: hidden;
+    @for $i from 1 through 9 {
+      &:nth-child(#{$i}) {
+        transform: rotateY(#{$i * 40}deg);
+        animation: rotate#{$i} 3s linear infinite;
+      }
+    }
+
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: indianred;
+      top: 12px;
+      left: 145px;
+    }
   }
 
+}
+@for $i from 1 through 9 {
+  @keyframes rotate#{$i} {
+    from{
+      transform: rotateY(#{$i * 40}deg);
+    }
+    to{
+      transform: rotateY(#{$i*40 +360}deg);
+    }
+  }
 }
