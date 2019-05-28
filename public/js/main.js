@@ -1,2 +1,2 @@
-$(()=>{!function(){const e=$(".cube");let o=0,c=0;$(document).on("keydown",function(d){!function(d){switch(!0){case 37===d.keyCode||65===d.keyCode:o+=90;break;case 39===d.keyCode||68===d.keyCode:o-=90;break;case 38===d.keyCode||87===d.keyCode:c+=90;break;case 40===d.keyCode||83===d.keyCode:c-=90}console.log(d.keyCode),e.css("transform",`rotateX(${c}deg) rotateY(${o}deg)`)}(d)})}()});
+$(()=>{!function(){const e=$(".cube");let o=0,n=0,t=!1;$(document).on("keydown",function(c){!function(c){if(console.log("working"),t)return;switch(!0){case 37===c.keyCode||65===c.keyCode:o+=60;break;case 39===c.keyCode||68===c.keyCode:o-=60}e.css("transform",`rotateX(${n}deg) rotateY(${o}deg)`),t=!0,setTimeout(function(){t=!1,console.log(t)},500)}(c)})}()});
 //# sourceMappingURL=main.js.map
