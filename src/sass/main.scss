@@ -43,11 +43,12 @@ body, html{
     opacity: .7;
     transition: all 1s ease-out;
     backface-visibility: hidden;
+    transform: scale(.6);
 
 
     &.active{
       opacity: 1;
-      transform: scale(1.15);
+      transform: scale(1);
     }
 
     &.slide-1{

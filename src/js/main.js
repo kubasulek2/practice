@@ -361,7 +361,7 @@ $(()=>{
 
 
     $(document).on("keydown", function (event) {
-      slideShow(event)
+      window.requestAnimationFrame(slideShow(event))
     });
 
 
