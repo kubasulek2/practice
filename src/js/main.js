@@ -366,7 +366,7 @@ $(()=>{
 
 
     function moveCube(ev) {
-      console.log("working");
+
       if (moveDisabled) return;
 
       switch (true) {
@@ -383,10 +383,8 @@ $(()=>{
       moveDisabled = true;
       setTimeout(function(){
         moveDisabled = false;
-        console.log(moveDisabled);
-        }, 500)
+        }, 1000)
 
     }
   })()
 });
-

@@ -21,16 +21,19 @@ html, body {
   //perspective-origin: 70% 35%;
 
   .cube{
-    width: 300px;
+    width: 854px;
     height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -100px;
-    margin-left: -100px;
+    margin-top: -150px;
+    margin-left: -427px;
     transform-style: preserve-3d;
     transform-origin: 50% 50% -500px;
-    transition: all .5s ease;
+    transition: all 1s linear;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
     //animation: cubeRotate 3s linear infinite;
 
 
