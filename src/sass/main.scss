@@ -13,48 +13,67 @@ html, body {
 .viewport{
   height: 100%;
   width: 100%;
-  perspective: 500px;
+  perspective: 1000px;
+  //perspective-origin: 70% 35%;
+
   background: #eee;
 
-  .face{
+  .cube{
     width: 300px;
-    height: 200px;
-    background: royalblue;
+    height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -100px;
-    margin-left: -150px;
-    transform-origin: 50% 50% -1000px;
-    backface-visibility: hidden;
-    @for $i from 1 through 9 {
-      &:nth-child(#{$i}) {
-        transform: rotateY(#{$i * 40}deg);
-        animation: rotate#{$i} 3s linear infinite;
-      }
-    }
+    margin-left: -100px;
+    transform-style: preserve-3d;
+    background: #777;
+    transform-origin: 50% 50% -150px;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: all .5s ease;
+    //animation: cubeRotate 3s linear infinite;
 
-    &:after{
-      content: '';
-      display: block;
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: indianred;
-      top: 12px;
-      left: 145px;
-    }
+
   }
 
-}
-@for $i from 1 through 9 {
-  @keyframes rotate#{$i} {
-    from{
-      transform: rotateY(#{$i * 40}deg);
+  .face{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: url("../action-architecture-billboard-1486222.jpg") top/cover no-repeat;
+    transform-origin: 50% 50% -150px;
+    //backface-visibility: hidden;
+
+    &.left{
+      background-image: url("../architecture-background-buildings-698604.jpg");
+      transform: rotateY(-90deg);
     }
-    to{
-      transform: rotateY(#{$i*40 +360}deg);
+    &.right{
+      background-image: url("../architecture-blur-building-258447.jpg");
+      transform: rotateY(90deg);
+
     }
+    &.back{
+      background-image: url("../architecture-building-capital-947177.jpg");
+      transform: rotateY(180deg);
+
+    }
+    &.top{
+      background-image: url("../architecture-buildings-city-1926404.jpg");
+      transform: rotateX(90deg);
+    }
+    &.bottom{
+      background-image: url("../architecture-city-horizontal-plane-1070945.jpg");
+      transform: rotateX(-90deg);
+    }
+  }
+};
+@keyframes cubeRotate {
+  from{
+    transform: rotateY(0deg);
+  }
+  to{
+    transform: rotateY(360deg);
+
   }
 }

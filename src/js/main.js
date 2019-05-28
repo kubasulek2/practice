@@ -349,12 +349,43 @@ console.log(me);
 // }
 //
 // const myStack = new Stack();
+
+
 $(()=>{
-  let stage = 0;
-  $('.example .button').on('click', function(){
-    stage >= 3 ? stage = 0: stage;
-    stage++;
-    $(this).parents('.example').toggleClass(`stage-${stage}`);
-  });
+
+  (function defineEnviroment(){
+    const element = $('.cube');
+    let yRotation = 0;
+    let xRotation = 0;
+
+
+    $(document).on("keydown", function (event) {
+      moveCube(event)
+    });
+
+
+    function moveCube(ev) {
+
+      switch (true) {
+        case ev.keyCode === 37 || ev.keyCode === 65:
+          yRotation += 90;
+          break;
+        case ev.keyCode === 39 || ev.keyCode === 68:
+          yRotation -= 90;
+          break;
+        case ev.keyCode === 38 || ev.keyCode === 87:
+          xRotation += 90;
+          break;
+        case ev.keyCode === 40 || ev.keyCode === 83:
+          xRotation -= 90;
+          break;
+      }
+      console.log(ev.keyCode);
+      element.css("transform", `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`)
+
+
+      //console.log(ev.keyCode+"\n"+ev.which)
+    }
+  })()
 });
 
