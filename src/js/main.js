@@ -354,35 +354,43 @@ console.log(me);
 $(()=>{
 
   (function defineEnviroment(){
-    const element = $('.cube');
-    let yRotation = 0;
-    let xRotation = 0;
-    let moveDisabled = false;
+    const element = $('.container');
+    const slides = $('.slide');
+    let count = 1;
+    let showEnabled = true;
 
 
     $(document).on("keydown", function (event) {
-      moveCube(event)
+      slideShow(event)
     });
 
 
-    function moveCube(ev) {
-
-      if (moveDisabled) return;
+    function slideShow(ev) {
+      if(!showEnabled) return;
 
       switch (true) {
         case ev.keyCode === 37 || ev.keyCode === 65:
-          yRotation += 60;
+          console.log("left");
+          count--;
+          count = count < 1 ? 1 : count;
           break;
         case ev.keyCode === 39 || ev.keyCode === 68:
-          yRotation -= 60;
+          console.log("right");
+          count++;
+          count = count > 6 ? 6 : count;
+
           break;
       }
+      slides
+        .removeClass("active")
+        .eq(count -1)
+        .addClass('active');
 
-      element.css("transform", `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`);
+      console.log(element.css("transform", `translateX(${-((count-1)*600)}px) `));
 
-      moveDisabled = true;
+      showEnabled = false;
       setTimeout(function(){
-        moveDisabled = false;
+        showEnabled = true;
         }, 1000)
 
     }

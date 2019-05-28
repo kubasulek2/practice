@@ -6,83 +6,71 @@
 }
 
 
-html, body {
-  position: relative;
+body, html{
   height: 100%;
   width: 100%;
-  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 .viewport{
-  height: 100%;
-  width: 100%;
-  perspective: 2000px;
-  background: #5b5b5b;
-  //perspective-origin: 70% 35%;
+  height: 500px;
+  width: 1450px;
+  perspective: 1000px;
 
-  .cube{
-    width: 854px;
+  //background: #7b7b7b;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  .container{
+    perspective: 1000px;
+    position: relative;
+    left: calc(725px - 250px);
+    transform: translateX(0);
     height: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -150px;
-    margin-left: -427px;
-    transform-style: preserve-3d;
-    transform-origin: 50% 50% -500px;
-    transition: all 1s linear;
-    backface-visibility: hidden;
+    min-width: 3600px;
+    transition: all 1s ease-out;
     display: flex;
-    justify-content: center;
-    //animation: cubeRotate 3s linear infinite;
-
-
+    justify-content: flex-start;
+    backface-visibility: hidden;
   }
 
-  .face{
-    position: absolute;
-    width: 300px;
+  .slide{
+    width: 500px;
     height: 300px;
-    background: url("../action-architecture-billboard-1486222.jpg") top/cover no-repeat;
-    transform-origin: 50% 50% -500px;
+    margin-right: 100px;
+    opacity: .7;
+    transition: all 1s ease-out;
     backface-visibility: hidden;
 
-    &.face-2{
-      backface-visibility: hidden;
+
+    &.active{
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    &.slide-1{
+
+      background: url("../action-architecture-billboard-1486222.jpg") top/cover no-repeat;
+    }
+    &.slide-2{
       background-image: url("../architecture-background-buildings-698604.jpg");
-      transform: rotateY(-60deg);
     }
-    &.face-3{
-      backface-visibility: hidden;
+    &.slide-3{
       background-image: url("../architecture-blur-building-258447.jpg");
-      transform: rotateY(-120deg);
 
     }
-    &.face-4{
-      backface-visibility: hidden;
+    &.slide-4{
       background-image: url("../architecture-building-capital-947177.jpg");
-      transform: rotateY(-180deg);
 
     }
-    &.face-5{
-      backface-visibility: hidden;
+    &.slide-5{
       background-image: url("../architecture-buildings-city-1926404.jpg");
-      transform: rotateY(-240deg);
     }
-    &.face-6{
-      backface-visibility: hidden;
+    &.slide-6{
       background-image: url("../architecture-city-horizontal-plane-1070945.jpg");
-      transform: rotateY(-300deg);
     }
   }
 };
-/*
-@keyframes cubeRotate {
-  from{
-    transform: rotateY(0deg);
-  }
-  to{
-    transform: rotateY(360deg);
 
-  }
-}*/
