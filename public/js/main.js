@@ -1,2 +1,2 @@
-$(()=>{!function(){const e=$(".container"),o=$(".slide");let n=1,t=!0;$(document).on("keydown",function(s){window.requestAnimationFrame(function(s){if(!t)return;switch(!0){case 37===s.keyCode||65===s.keyCode:console.log("left"),n=--n<1?1:n;break;case 39===s.keyCode||68===s.keyCode:console.log("right"),n=++n>6?6:n}o.removeClass("active").eq(n-1).addClass("active"),console.log(e.css("transform",`translateX(${-600*(n-1)}px) `)),t=!1,setTimeout(function(){t=!0},1e3)}(s))})}()});
+$(function(){$(".anim").on("click",function(){let a=$(this).attr("data-anim");console.log(a),$("#cube").removeClass().addClass(a)})});
 //# sourceMappingURL=main.js.map

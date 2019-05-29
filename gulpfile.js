@@ -62,8 +62,8 @@ gulp.task( 'images', function () {
 
 gulp.task('fonts', function () {
     return gulp
-        .src( 'src/fonts/**' )
-        .pipe(gulp.dest('public/fonts'));
+        .src( 'src/font/**' )
+        .pipe(gulp.dest('public/font'));
 })
 
 gulp.task( 'html', function () {

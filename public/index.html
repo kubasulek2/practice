@@ -9,25 +9,76 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 
 </head>
 <body>
-<div class="viewport">
-  <div class="container">
-    <div class="slide slide-1 active"></div>
-    <div class="slide slide-2"></div>
-    <div class="slide slide-3"></div>
-    <div class="slide slide-4"></div>
-    <div class="slide slide-5"></div>
-    <div class="slide slide-6"></div>
+<div id="viewport">
+  <div id="cube">
+    <div id="front">
+      <div id="login">
+        <h1>Sign in</h1>
+        <div class="ui_form">
+          <input type="text"/>
+          <span>.</span>
+        </div>
+        <div class="ui_form mt">
+          <input type="password"/>
+          <span>w</span>
+        </div>
+        <a href="#" class="anim" data-anim="right">Login</a>
+      </div>
+    </div>
+    <div id="right">
+      <div class="nav_large">
+        <img src="images/wheat.jpg" width="400" alt="wheat"/>
+        <h1>EWD UI</h1>
+        <p>Open source UI Kit...</p>
+        <a href="#" class="anim" data-anim="back">Find out more...<span>&gt;</span></a>
+        <ul>
+          <li>
+            <p><span>O</span><br/> 1,567</p>
+          </li>
+          <li>
+            <p><span>T</span><br/> 1,900</p>
+          </li>
+          <li>
+            <p><span>S</span><br/> 567</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="back">
+      <div class="videoWrapper smallVideo">
+        <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640"
+               height="264"
+               poster="http://video-js.zencoder.com/oceans-clip.png"
+               data-setup="{}">
+          <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+          <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+          <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+        </video>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem libero, blandit eu imperdiet at, auctor a odio. Ut in pellentesque lectus. Mauris et libero libero. Donec velit velit, faucibus et diam eget, mollis auctor justo. Donec rutrum imperdiet luctus. Mauris ac diam neque. Lorem ipsum dolor sit amet blandit eu imperdiet at, dollis auctor justo donec.</p>
+      <div id="buttons">
+        <a href="#" id="first_btn" class="anim" data-anim="right"><span>&#211;</span>Back</a>
+        <a href="#" id="last_btn" class="anim" data-anim="left">Next<span>&#214;</span></a>
+      </div>
+    </div>
+    <div id="left">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem libero, blandit eu imperdiet at, auctor a odio. Ut in pellentesque lectus. Mauris et libero libero. Donec velit velit, faucibus et diam eget, mollis auctor justo. Donec rutrum imperdiet luctus. Mauris ac diam neque. Lorem ipsum dolor sit amet blandit eu imperdiet at, dollis auctor justo donec rutrum imperdiet luctus.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem libero, blandit eu imperdiet at, auctor a odio. Ut in pellentesque lectus. Mauris et libero libero. Donec velit velit, faucibus et diam eget, mollis auctor justo. Donec rutrum imperdiet luctus. Mauris ac diam neque. Lorem ipsum dolor sit amet blandit eu imperdiet at, dollis auctor justo donec rutrum imperdiet luctus.</p>
+      <a href="#" rel="a_top" class="anim" data-anim="top"><span>&#243;</span>Finish</a>
+    </div>
+    <div id="top">
+      <h1>Thank you!</h1>
+      <span>&#243;</span>
+    </div>
+    <div id="bottom"></div>
+  </div>
 </div>
-
-</div>
-
-
+<script type="text/javascript" src="js/vendor/modinizr.js"></script>
+<script type="text/javascript" src="js/vendor/video.js"></script>
 <script src="js/vendor/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
