@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":["$","on","anim","this","attr","console","log","removeClass","addClass"],"mappings":"AAAAA,EAAE,WACAA,EAAE,SAASC,GAAG,QAAd,WACE,IAAIC,EAAOF,EAAEG,MAAMC,KAAK,aACxBC,QAAQC,IAAIJ,GACZF,EAAE,SAASO,cAAcC,SAASN","file":"main.js","sourcesContent":["$(function(){\n  $('.anim').on('click',function(){\n    let anim = $(this).attr('data-anim');\n    console.log(anim);\n    $('#cube').removeClass().addClass(anim);\n  });\n});"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"main.js","sourcesContent":[]}
