@@ -1,109 +1,70 @@
-
-
-///////////////////// General Styling /////////////////////
-html{
-  height: 100%;
-}
-
-body{
+html, body{
+  margin: 0;
   height: 100%;
   width: 100%;
-  background:#f0e9dd;
+}
+body {
+  perspective: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
-
 #viewport{
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
+  transform-style: preserve-3d;
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  //background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-img{
-  width: 21%;
-  max-width: 300px;
-  margin: 10px;
-  box-shadow:1px 1px 4px rgba(0,0,0,.8);
-}
 
-@media screen and (max-width:580px){
-  img{
-    width: 44.5%;
+  #top-layer{
+    flex-shrink: 0;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: rosybrown;
+    transform: translateZ(-250px) rotateY(0deg);
+    transform-style: preserve-3d;
+    //animation: rotateTop 7s infinite linear;
+
+    &>div{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: royalblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 30px;
+      font-family: Arial, sans-serif;
+      opacity: .8;
+      border-radius: 10px;
+    }
+
+    #front{
+      transform: translateZ(260px);
+    }
+    #right{
+      transform: translateX(65%) rotateY(90deg);
+    }
+    #back{
+      transform: translateZ(-260px) rotateY(180deg);
+    }
+    #left{
+      transform: translateX(-65%) rotateY(-90deg);
+    }
   }
 }
 
-///////////////////// 3D Environment /////////////////////
-
-.preserve3d #viewport{
-
-  text-align: left;
-  perspective:500px;
+@keyframes rotateTop {
+  from{
+    transform: translateZ(-250px) rotateY(0turn);
+  }
+  to{
+    transform: translateZ(-250px) rotateY(-1turn);
+  }
 }
-
-.preserve3d #toptier,.preserve3d #bottomtier{
-  perspective: 500px;
-  width: 300px;
-  height: 169px;
-  background: url('../images/parent.png');
-  transform-style: preserve-3d;
-}
-
-
-.preserve3d img{
-  position: absolute;
-  width: 300px;
-  margin: 0;
-  opacity: .7;
-  border-radius: 4px;
-  box-shadow: none;
-}
-
-
-///////////////////// Toptier Object /////////////////////
-
-.preserve3d #toptier{
-  margin:0 auto 40px auto;
-  //transform: translateZ(-160px);
-}
-
-.preserve3d #pic1{
-  transform:translateZ(160px);
-}
-
-/*.preserve3d #pic2{
-  @include transform( translateX(160px) rotateY(90deg) );
-}
-
-/*.preserve3d #pic3{
-  @include transform( translateZ(-160px) rotateY(180deg) );
-}
-
-/*.preserve3d #pic4{
-  @include transform( translateX(-160px) rotateY(-90deg) );
-}
-*/
-
-///////////////////// Bottomtier Object /////////////////////
-
-.preserve3d #bottomtier{
-  margin: 0 auto;
-  //transform(translateZ(-280px));
-}
-
-/*.preserve3d #pic5{
-  @include transform( translateZ(280px) );
-}
-
-/*.preserve3d #pic6{
-  @include transform( translateX(280px) rotateY(90deg) );
-}
-
-/*.preserve3d #pic7{
-  @include transform( translateZ(-280px) rotateY(180deg) );
-}
-
-/*.preserve3d #pic8{
-  @include transform( translateX(-280px) rotateY(-90deg) );
-}*/
