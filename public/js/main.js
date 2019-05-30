@@ -1,2 +1,2 @@
-$(()=>{$("#top-layer>div").on("click",function(){const t=$(this).attr("id"),e=$(this).parent();let a;switch(t){case"front":a=0;break;case"right":a=-90;break;case"back":a=-180;break;case"left":a=-270}e.css("animation-play-state","paused")}),function(t,e,a){let s=(1e3*a/360).toFixed(4),n=e;window.setInterval(()=>{n=n<-360?0:n,n++,console.log(n),t.css("transform",` translateZ(-250px) rotateY(${n}deg)`)},s)}($("#top-layer"),0,6)});
+$(()=>{$("#top-layer>div").on("click",function(){const a=$(this).attr("id"),t=$(this).parent();let e;switch(a){case"front":e=0;break;case"right":e=-90;break;case"back":e=-180;break;case"left":e=-270}t.css("animation-play-state","paused")})});
 //# sourceMappingURL=main.js.map

@@ -42,7 +42,7 @@ $(() => {
       },frame)
 
   }
-  animateRotationY($('#top-layer'), 0, 6);
+  //animateRotationY($('#top-layer'), 0, 6);
 
 
   function getRotationDegrees(obj) {
