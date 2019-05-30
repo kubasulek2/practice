@@ -30,18 +30,9 @@ body {
     transform: translateZ(-250px) rotateY(0deg);
     transform-style: preserve-3d;
     animation: rotateTop 7s infinite linear forwards;
-    &.state-1{
-      transform: translateZ(-250px) rotateY(-90deg);
-    }
-    &.state-2{
-      transform: translateZ(-250px) rotateY(-180deg);
-    }
-    &.state-3{
-      transform: translateZ(-250px) rotateY(-270deg);
-    }
-    &.state-4{
-      transform: translateZ(-250px) rotateY(-360deg);
-    }
+
+
+
 
     &>div{
       cursor: pointer;
@@ -58,6 +49,13 @@ body {
       text-transform: uppercase;
       opacity: .8;
       border-radius: 10px;
+      transition: all 1s ease-out;
+
+      &.focus{
+        width: 120%;
+        height: 120%;
+        opacity: 1;
+      }
     }
 
     #front{

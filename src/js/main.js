@@ -22,9 +22,9 @@ $(() => {
         break;
     }
     parentElement
-      .css("animation-play-state", 'paused');
+      .css("animation-play-state", 'paused')
       //.css('transform', `translateZ(-250px) rotateY(${rotation}deg)`)
-
+    $(this).addClass("focus");
 
   });
 
