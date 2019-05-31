@@ -16,7 +16,7 @@ class htmlElement {
 class tetragon3d extends htmlElement{
   constructor(element ,speed){
     super(element);
-    this.rotationSpeed = speed;
+    this.rotationSpeed = speed > 1 ? 1 : speed;
 
     this.planes = this.element.children('div');
     this.timeData = {
@@ -35,11 +35,17 @@ class tetragon3d extends htmlElement{
   animateRotationY() {
 
     if ( this.motionData.move ){
+
       this.motionData.speed = this.computeRotatingTime( 45 );
+
       this.motionData.currentAngle = this.motionData.currentAngle < -360 ? 0 : this.motionData.currentAngle;
       this.motionData.currentAngle -= this.rotationSpeed;
 
       this.element.css( "transform", ` translateZ(-250px) rotateY(${this.motionData.currentAngle}deg)` );
+
+      // targetAngle is set in click event, so after click event rotation will stop
+      if( Math.ceil(this.motionData.currentAngle) === this.motionData.targetAngle )
+        this.motionData.move = false;
 
       window.requestAnimationFrame( ()=> this.animateRotationY() )
     }
@@ -52,16 +58,17 @@ class tetragon3d extends htmlElement{
   }
 
   computeRotatingTime(angle){
-
+    console.log(this.motionData.speed);
     let rotationTime;
     let measure = Math.abs( Math.floor(this.motionData.currentAngle) );
 
-    if (Number(measure) === 1) this.timeDatathen = new Date();
-    else if (measure === 1 + angle)  this.timeDatanow = new Date;
-    if(this.timeDatanow && this.timeDatathen) {
-      rotationTime =  (this.timeDatanow - this.timeDatathen)/1000;
-      this.timeDatanow = undefined;
-      this.timeDatathen = undefined;
+    if (Number(measure) === 1) this.timeData.then = new Date();
+    else if (measure === 1 + angle)  this.timeData.now = new Date;
+
+    if(this.timeData.now && this.timeData.then) {
+      rotationTime =  (this.timeData.now - this.timeData.then)/1000;
+      this.timeData.now = undefined;
+      this.timeData.then = undefined;
       return rotationTime;
     }
     return this.motionData.speed;
@@ -86,21 +93,21 @@ class tetragon3d extends htmlElement{
         break;
     }
   }
+  shouldChangeDirection(){
+    if ( this.motionData.currentAngle < this.motionData.targetAngle )
+      this.rotationSpeed = -this.rotationSpeed;
+   console.log(this.motionData.currentAngle < this.motionData.targetAngle);
+  }
 
   planeClickEvent(flag){
     if(flag){
-      this.planes.on('click', (e)=> {
+      this.planes.on( 'click', (e)=> {
         this.getTargetAngle(e);
 
         let transitionSpeed = this.computeTransitionSpeed();
+        this.shouldChangeDirection();
 
-        this.motionData.move = false;
-
-        this.element
-          .css('transition', `all ${transitionSpeed}s ease-out`)
-          .css('transform', `translateZ(-250px) rotateY(${ this.motionData.targetAngle }deg)`)
-
-      })
+      } )
     } else {
       this.planes.off()
     }
@@ -112,7 +119,7 @@ class tetragon3d extends htmlElement{
 }
 
 $(() => {
-  let myElement = new tetragon3d($('#top-layer'),0.8);
+  let myElement = new tetragon3d($('#top-layer'),5);
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 
