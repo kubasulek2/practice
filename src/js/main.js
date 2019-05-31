@@ -19,24 +19,33 @@ class tetragon3d extends htmlElement{
     this.rotationSpeed = speed > 1 ? 1 : speed;
 
     this.planes = this.element.children('div');
-    this.timeMeasure = {
+    this.speedMeasure = {
       start: undefined,
       stop: undefined,
-      measureAngle: 30
+      lastMeasuredAngle: undefined,
+      speedNow: undefined,
+      speedArr: [],
+      avgSpeed: undefined
     };
     this.motionData = {
       currentAngle: 0,
       targetAngle: undefined,
-      speed: undefined,
       move: true
     }
+  }
+  calculateEntryValues() {
+    this.speedMeasure.avgSpeed = (30 / ( this.rotationSpeed * 60 ) );
+
   }
 
   animateRotationY() {
 
+    if ( !this.speedMeasure.avgSpeed ) this.calculateEntryValues();
+
     if ( this.motionData.move ){
 
-      this.motionData.speed = this.computeRotatingTime();
+      let rotationSpeed = this.computeRotatingTime();
+      this.computeAvgSpeed(rotationSpeed);
 
       this.motionData.currentAngle -= this.rotationSpeed;
       this.motionData.currentAngle = this.motionData.currentAngle <= -360 ? 0 : this.motionData.currentAngle;
@@ -51,39 +60,55 @@ class tetragon3d extends htmlElement{
     }
   }
 
+
   computeTransitionSpeed(){
     let distance = Math.abs(this.motionData.targetAngle) - Math.abs(this.motionData.currentAngle);
     let ratio = distance / 45;
-    return ratio * this.motionData.speed
+    return ratio * this.speedMeasure.speedNow
   }
 
   computeRotatingTime(){
 
     let currentAngle = Math.abs( Math.floor(this.motionData.currentAngle) );
-      let rotationTime;
-      console.log(currentAngle);
-    /*let flag = !(currentAngle % 30);
+    let rotationTime;
+    let flag = !(currentAngle % 31);
 
-    if(this.timeMeasure.measureAngle === currentAngle){
-      this.timeMeasure.stop = new Date();
-      rotationTime =  (this.timeMeasure.stop - this.timeMeasure.start)/1000;
-      return rotationTime;
+
+    // return if current angle haven't change from last measurement
+    if (this.speedMeasure.lastMeasuredAngle === currentAngle){
+      return null;
     }
 
+
+    this.speedMeasure.lastMeasuredAngle = currentAngle;
+
+
+    if(this.speedMeasure.measureAngle === currentAngle){
+      this.speedMeasure.stop = new Date();
+      rotationTime =  (this.speedMeasure.stop - this.speedMeasure.start)/1000;
+      return rotationTime;
+    }
+    //every 31 degrees start time, and angle, at which speed will be measured, are set
     if ( flag ) {
-      this.timeMeasure.measureAngle = this.motionData.currentAngle === 360 ? 30 : currentAngle + 30;
-      this.timeMeasure.start = new Date();
+      this.speedMeasure.measureAngle = this.motionData.currentAngle === 360 ? 30 : currentAngle + 30;
+      this.speedMeasure.start = new Date();
     }
-    console.log('set measure ', currentAngle, this.timeMeasure.measureAngle);*/
+    return null
+  }
+  computeAvgSpeed(arg){
 
+    if ( arg === null ) return;
 
-    /*if(this.timeMeasure.stop && this.timeMeasure.start) {
+    this.speedMeasure.speedArr.push(arg);
 
-      this.timeMeasure.stop = undefined;
-      this.timeMeasure.start = undefined;
-      return rotationTime;
+    if ( this.speedMeasure.speedArr.length > 4 ){
+      this.speedMeasure.speedArr.shift();
+
     }
-    return this.motionData.speed;*/
+    this.speedMeasure.avgSpeed = this.speedMeasure.speedArr.reduce((a,b) => a + b, 0) / this.speedMeasure.speedArr.length;
+
+    console.log(this.speedMeasure.speedArr,this.speedMeasure.avgSpeed);
+
   }
 
   getTargetAngle (e) {
@@ -136,6 +161,7 @@ class tetragon3d extends htmlElement{
 }
 
 $(() => {
+
   let myElement = new tetragon3d($('#top-layer'),.5);
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
