@@ -17,7 +17,7 @@ class tetragon3d extends htmlElement{
   constructor(element ,speed){
     super(element);
     this.rotationSpeed = speed > 1 ? 1 : speed;
-
+    this.clickedId =  '';
     this.planes = this.element.children('div');
     this.speedMeasure = {
       start: undefined,
@@ -47,10 +47,8 @@ class tetragon3d extends htmlElement{
       let rotationSpeed = this.computeRotatingTime();
       this.computeAvgSpeed(rotationSpeed);
 
-      if (this.easing.length !== 0) {
-        console.log(this.easing);
-        this.applyEasing();
-      };
+      if (this.easing.length !== 0) this.applyEasing();
+
 
       this.motionData.currentAngle -= this.rotationSpeed;
       this.motionData.currentAngle = this.motionData.currentAngle <= -360 ? 0 : this.motionData.currentAngle;
@@ -62,6 +60,9 @@ class tetragon3d extends htmlElement{
         this.motionData.move = false;
 
       window.requestAnimationFrame( ()=> this.animateRotationY() )
+    }
+    else {
+      this.animatePlane()
     }
   }
 
@@ -117,7 +118,7 @@ class tetragon3d extends htmlElement{
       slowAngles += threshold;
       speed -= speedChange;
 
-      if (speed > 0) speed = speed < 0.15 ? 0.15 : speed;
+      if ( speed > 0 ) speed = speed < 0.15 ? 0.15 : speed;
       else speed = speed > -0.15 ? -0.15 : speed;
 
       easing[i-1] = [];
@@ -210,14 +211,23 @@ class tetragon3d extends htmlElement{
     return direction
   }
 
+  animatePlane(){
+
+    let myPlane = this.planes.filter( ( i,el ) => $(el).attr('id') === this.clickedId);
+
+        myPlane.addClass("focus")
+      .css('opacity', '1')
+      .css('font-size', '50px')
+  }
+
   planeClickEvent(flag){
     if(flag){
       this.planes.on( 'click', (e)=> {
         this.getTargetAngle(e);
+        this.clickedId = e.target.id;
 
         let direction = this.shouldChangeDirection();
         this.easing = this.computeEasing(direction);
-        console.log(this.easing);
 
       } )
     } else {
@@ -236,10 +246,4 @@ $(() => {
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 
-  Math.easeOutQuad = function (t, b, c, d) {
-    t /= d;
-    return -c * t*(t-2) + b;
-  };
-
-  let easing = Math.easeOutQuad(0.6,54,36,0.4);
 });

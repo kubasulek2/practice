@@ -26,10 +26,9 @@ body {
     position: relative;
     width: 400px;
     height: 400px;
-    background: rosybrown;
+    //background: rosybrown;
     transform: translateZ(-250px) rotateY(0deg);
     transform-style: preserve-3d;
-    //animation: rotateTop 7s infinite linear forwards;
 
 
 
@@ -39,7 +38,7 @@ body {
       width: 100%;
       height: 100%;
       position: absolute;
-      background: url("https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+      background: url("https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") 0% 0%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -49,12 +48,18 @@ body {
       text-transform: uppercase;
       opacity: .8;
       border-radius: 10px;
-      transition: all 1s ease-out;
+      transition:
+              opacity 1s ease-out 0s,
+              width 1s ease-out 1s,
+              height 1s ease-out 1s,
+              font-size 1s ease-out 2s;
+
 
       &.focus{
+        opacity: 1;
         width: 120%;
         height: 120%;
-        opacity: 1;
+        font-size: 50px;
       }
     }
 
