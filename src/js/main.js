@@ -63,6 +63,7 @@ class tetragon3d extends htmlElement{
     }
     else {
       this.animatePlane()
+      return
     }
   }
 
