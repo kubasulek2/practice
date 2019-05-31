@@ -19,17 +19,16 @@ class tetragon3d extends htmlElement{
     this.rotationSpeed = speed > 1 ? 1 : speed;
 
     this.planes = this.element.children('div');
-    this.timeData = {
-      then: undefined,
-      now: undefined
+    this.timeMeasure = {
+      start: undefined,
+      stop: undefined,
+      measureAngle: 30
     };
     this.motionData = {
       currentAngle: 0,
       targetAngle: undefined,
       speed: undefined,
-      move: true,
-      measureAngle: undefined
-
+      move: true
     }
   }
 
@@ -37,10 +36,10 @@ class tetragon3d extends htmlElement{
 
     if ( this.motionData.move ){
 
-      this.motionData.currentAngle = this.motionData.currentAngle <= -360 ? 0 : this.motionData.currentAngle;
-
       this.motionData.speed = this.computeRotatingTime();
+
       this.motionData.currentAngle -= this.rotationSpeed;
+      this.motionData.currentAngle = this.motionData.currentAngle <= -360 ? 0 : this.motionData.currentAngle;
 
       this.element.css( "transform", ` translateZ(-250px) rotateY(${this.motionData.currentAngle}deg)` );
 
@@ -62,23 +61,26 @@ class tetragon3d extends htmlElement{
 
     let currentAngle = Math.abs( Math.floor(this.motionData.currentAngle) );
       let rotationTime;
-    let flag = !(currentAngle % 30);
+      console.log(currentAngle);
+    /*let flag = !(currentAngle % 30);
 
-    if ( currentAngle === this.motionData.measureAngle ) {
-      this.timeData.now = new Date();
+    if(this.timeMeasure.measureAngle === currentAngle){
+      this.timeMeasure.stop = new Date();
+      rotationTime =  (this.timeMeasure.stop - this.timeMeasure.start)/1000;
+      return rotationTime;
     }
 
     if ( flag ) {
-      console.log('aaa', currentAngle);
-      this.motionData.measureAngle = currentAngle + 30;
-      this.timeData.then = new Date();
-
+      this.timeMeasure.measureAngle = this.motionData.currentAngle === 360 ? 30 : currentAngle + 30;
+      this.timeMeasure.start = new Date();
     }
+    console.log('set measure ', currentAngle, this.timeMeasure.measureAngle);*/
 
-    /*if(this.timeData.now && this.timeData.then) {
-      rotationTime =  (this.timeData.now - this.timeData.then)/1000;
-      this.timeData.now = undefined;
-      this.timeData.then = undefined;
+
+    /*if(this.timeMeasure.stop && this.timeMeasure.start) {
+
+      this.timeMeasure.stop = undefined;
+      this.timeMeasure.start = undefined;
       return rotationTime;
     }
     return this.motionData.speed;*/
@@ -104,9 +106,14 @@ class tetragon3d extends htmlElement{
     }
   }
   shouldChangeDirection(){
-    if ( this.motionData.currentAngle < this.motionData.targetAngle )
+    if( this.motionData.targetAngle === 0 ){
+      //if clicked in front plane, which set target angle to 0 , must have special check, cause current angle is always lesser than 0
+      this.rotationSpeed = this.motionData.currentAngle < -180 ? this.rotationSpeed : -this.rotationSpeed
+
+    } else if ( this.motionData.currentAngle < this.motionData.targetAngle )
+      //all the other cases
       this.rotationSpeed = -this.rotationSpeed;
-   console.log(this.motionData.currentAngle < this.motionData.targetAngle);
+
   }
 
   planeClickEvent(flag){
@@ -129,7 +136,7 @@ class tetragon3d extends htmlElement{
 }
 
 $(() => {
-  let myElement = new tetragon3d($('#top-layer'),.6);
+  let myElement = new tetragon3d($('#top-layer'),.5);
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 
