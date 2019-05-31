@@ -23,7 +23,6 @@ class tetragon3d extends htmlElement{
       start: undefined,
       stop: undefined,
       lastMeasuredAngle: undefined,
-      speedNow: undefined,
       speedArr: [],
       avgSpeed: undefined
     };
@@ -31,7 +30,8 @@ class tetragon3d extends htmlElement{
       currentAngle: 0,
       targetAngle: undefined,
       move: true
-    }
+    };
+    this.easing = [];
   }
   calculateEntryValues() {
     this.speedMeasure.avgSpeed = (30 / ( this.rotationSpeed * 60 ) );
@@ -47,6 +47,11 @@ class tetragon3d extends htmlElement{
       let rotationSpeed = this.computeRotatingTime();
       this.computeAvgSpeed(rotationSpeed);
 
+      if (this.easing.length !== 0) {
+        console.log(this.easing);
+        this.applyEasing();
+      };
+
       this.motionData.currentAngle -= this.rotationSpeed;
       this.motionData.currentAngle = this.motionData.currentAngle <= -360 ? 0 : this.motionData.currentAngle;
 
@@ -61,12 +66,75 @@ class tetragon3d extends htmlElement{
   }
 
 
-  computeTransitionSpeed(){
-    let distance = Math.abs(this.motionData.targetAngle) - Math.abs(this.motionData.currentAngle);
-    let ratio = distance / 45;
-    return ratio * this.speedMeasure.speedNow
-  }
+  computeEasing(direction){
+    let distance = Math.abs( Math.abs(this.motionData.targetAngle) - Math.abs(this.motionData.currentAngle) );
 
+    let steps = distance < 20 ? 5 : 10;
+    let threshold, delay, speed, speedChange, startEase, slowAngles, easing = [];
+    let baseSpeed = this.rotationSpeed;
+
+    switch (true) {
+      case distance <= 10 :
+        delay = 0;
+        break;
+      case distance <= 20 :
+        delay = 3;
+        break;
+      case distance <= 30 :
+        delay = 8;
+        break;
+      case distance <= 40 :
+        delay = 15;
+        break;
+      case distance <= 50 :
+        delay = 24;
+        break;
+      case distance <= 60 :
+        delay = 32;
+        break;
+      case distance <= 70 :
+        delay = 40;
+        break;
+      case distance <= 80 :
+        delay = 50;
+        break;
+      case distance <= 90 :
+        delay = 60;
+        break;
+
+    }
+
+    threshold = ( distance - delay ) / steps;
+    speedChange = baseSpeed/steps;
+    speed = baseSpeed;
+    startEase = direction === "forth" ? this.motionData.currentAngle - delay : this.motionData.currentAngle + delay;
+    slowAngles = startEase;
+
+    threshold = direction === "forth" ? -threshold : threshold;
+
+
+    for(let i = 1; i < steps; i++){
+      slowAngles += threshold;
+      speed -= speedChange;
+
+      if (speed > 0) speed = speed < 0.15 ? 0.15 : speed;
+      else speed = speed > -0.15 ? -0.15 : speed;
+
+      easing[i-1] = [];
+
+      easing[i-1].push( Math.round( slowAngles ) );
+      easing[i-1].push( parseFloat( speed.toFixed(2) ) );
+    }
+    return easing;
+
+  }
+  applyEasing(){
+
+    this.easing.forEach(  value => {
+      if ( Math.round(this.motionData.currentAngle) === value[0] )
+        this.rotationSpeed = value[1];
+    })
+  }
   computeRotatingTime(){
 
     let currentAngle = Math.abs( Math.floor(this.motionData.currentAngle) );
@@ -107,8 +175,6 @@ class tetragon3d extends htmlElement{
     }
     this.speedMeasure.avgSpeed = this.speedMeasure.speedArr.reduce((a,b) => a + b, 0) / this.speedMeasure.speedArr.length;
 
-    console.log(this.speedMeasure.speedArr,this.speedMeasure.avgSpeed);
-
   }
 
   getTargetAngle (e) {
@@ -131,14 +197,17 @@ class tetragon3d extends htmlElement{
     }
   }
   shouldChangeDirection(){
+    let direction = "forth";
     if( this.motionData.targetAngle === 0 ){
       //if clicked in front plane, which set target angle to 0 , must have special check, cause current angle is always lesser than 0
-      this.rotationSpeed = this.motionData.currentAngle < -180 ? this.rotationSpeed : -this.rotationSpeed
-
-    } else if ( this.motionData.currentAngle < this.motionData.targetAngle )
+      this.rotationSpeed = this.motionData.currentAngle < -180 ? this.rotationSpeed : -this.rotationSpeed;
+      direction = this.motionData.currentAngle < -180 ? "forth" :  "back"
+    } else if ( this.motionData.currentAngle < this.motionData.targetAngle ){
       //all the other cases
       this.rotationSpeed = -this.rotationSpeed;
-
+      direction = "back"
+    }
+    return direction
   }
 
   planeClickEvent(flag){
@@ -146,8 +215,9 @@ class tetragon3d extends htmlElement{
       this.planes.on( 'click', (e)=> {
         this.getTargetAngle(e);
 
-        let transitionSpeed = this.computeTransitionSpeed();
-        this.shouldChangeDirection();
+        let direction = this.shouldChangeDirection();
+        this.easing = this.computeEasing(direction);
+        console.log(this.easing);
 
       } )
     } else {
@@ -162,7 +232,7 @@ class tetragon3d extends htmlElement{
 
 $(() => {
 
-  let myElement = new tetragon3d($('#top-layer'),.5);
+  let myElement = new tetragon3d($('#top-layer'),1);
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 
