@@ -62,8 +62,7 @@ class tetragon3d extends htmlElement{
       window.requestAnimationFrame( ()=> this.animateRotationY() )
     }
     else {
-      this.animatePlane()
-      return
+      this.animatePlane();
     }
   }
 
@@ -243,7 +242,7 @@ class tetragon3d extends htmlElement{
 
 $(() => {
 
-  let myElement = new tetragon3d($('#top-layer'),1);
+  let myElement = new tetragon3d($('#top-layer'),.5);
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 

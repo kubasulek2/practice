@@ -24,8 +24,8 @@ body {
   #top-layer{
     flex-shrink: 0;
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 570px;
+    height: 570px;
     //background: rosybrown;
     transform: translateZ(-250px) rotateY(0deg);
     transform-style: preserve-3d;
@@ -43,37 +43,49 @@ body {
       justify-content: center;
       align-items: center;
       color: white;
-      font-size: 30px;
+      font-size: 50px;
+      font-weight: 500;
+      //backface-visibility: hidden;
       font-family: Arial, Helvetica, sans-serif;
       text-transform: uppercase;
-      opacity: .8;
+      //opacity: .8;
       border-radius: 10px;
+      overflow: hidden;
       transition:
-              opacity .5s ease-in 0s,
-              width .5s ease-in .5s,
-              height .5s ease-in .5s,
-              font-size .5s ease-in 1s;
-
+              opacity .5s ease-out 0s,
+              transform 1s ease-in-out .6s;
 
       &.focus{
         opacity: 1;
-        width: 120%;
-        height: 120%;
-        font-size: 50px;
       }
     }
 
     #front{
-      transform: translateZ(260px);
+      transform: translateZ(285px) scale(.7);
+      &.focus{
+        transform: translateZ(285px) scale(1);
+      }
     }
     #right{
-      transform: translateX(65%) rotateY(90deg);
+      transform: translateX(285px) rotateY(90deg) scale(.7);
+      &.focus{
+        transform: translateX(285px) rotateY(90deg) scale(1);
+
+      }
     }
     #back{
-      transform: translateZ(-260px) rotateY(180deg);
+      transform: translateZ(-285px) rotateY(180deg) scale(.7);
+      &.focus{
+        transform: translateZ(-285px) rotateY(180deg) scale(1);
+
+      }
     }
     #left{
-      transform: translateX(-65%) rotateY(-90deg);
+      transform: translateX(-285px) rotateY(-90deg) scale(.7);
+      &.focus{
+        transform: translateX(-285px) rotateY(-90deg) scale(1);
+
+      }
     }
   }
 }
