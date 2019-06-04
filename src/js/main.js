@@ -124,8 +124,8 @@ class tetragon3d extends htmlElement{
       slowAngles += threshold;
       speed -= speedChange;
 
-      if ( speed > 0 ) speed = speed < 0.15 ? 0.15 : speed;
-      else speed = speed > -0.15 ? -0.15 : speed;
+      if ( speed > 0 ) speed = speed < 0.1 ? 0.1 : speed;
+      else speed = speed > -0.1 ? -0.1 : speed;
 
       easing[i-1] = [];
 
@@ -228,7 +228,7 @@ class tetragon3d extends htmlElement{
   planeClickEvent(flag){
     if(flag){
       this.planes.on( 'click', (e)=> {
-        let target = $(e.target);
+        let target = $(e.currentTarget);
         e.stopPropagation();
         this.getTargetAngle(e);
         this.clickedId = e.target.id;
@@ -242,7 +242,7 @@ class tetragon3d extends htmlElement{
           .css('cursor', 'pointer')
           .one('click', (e) => {
             target.css('cursor', 'pointer');
-            $(e.target).css('cursor', 'initial');
+            $(e.currentTarget).css('cursor', 'initial');
             this.restoreAnimation();
           });
 
@@ -270,7 +270,7 @@ class tetragon3d extends htmlElement{
   }
 
   accelerate(){
-    this.rotationSpeed =  this.rotationSpeed + 0.01
+    this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.01 ).toFixed(2) );
   }
 
 }
