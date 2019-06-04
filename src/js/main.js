@@ -19,6 +19,7 @@ class tetragon3d extends htmlElement{
     this.baseSpeed = speed > 1 ? 1 : speed;
     this.rotationSpeed = speed > 1 ? 1 : speed;
     this.clickedId =  '';
+    this.content = 1;
     this.planes = this.element.children('.face');
     this.speedMeasure = {
       start: undefined,
@@ -148,6 +149,8 @@ class tetragon3d extends htmlElement{
     let rotationTime;
     let flag = !(currentAngle % 31);
 
+    this.setDynamicContent();
+
 
     // return if current angle haven't change from last measurement
     if (this.speedMeasure.lastMeasuredAngle === currentAngle){
@@ -272,6 +275,14 @@ class tetragon3d extends htmlElement{
   accelerate(){
     this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.01 ).toFixed(2) );
   }
+
+  setDynamicContent(){
+   /* if ( !(this.motionData.currentAngle % 90) ){
+      this.content = this.content + 1
+    }*/
+
+  }
+
 
 }
 
