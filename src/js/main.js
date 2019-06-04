@@ -18,8 +18,8 @@ class tetragon3d extends htmlElement{
     super(element);
     this.baseSpeed = speed > 1 ? 1 : speed;
     this.rotationSpeed = speed > 1 ? 1 : speed;
-    this.clickedId =  '';
-    this.planes = this.element.children('.face');
+    this.clickedId = '';
+    this.faces = this.element.children('.face');
     this.easing = [];
     this.speedMeasure = {
       start: undefined,
@@ -29,6 +29,7 @@ class tetragon3d extends htmlElement{
       avgSpeed: undefined
     };
     this.motionData = {
+      isAboutToStop: false,
       currentAngle: 0,
       targetAngle: undefined,
       move: true
@@ -225,20 +226,22 @@ class tetragon3d extends htmlElement{
 
   animatePlane(){
 
-    let myPlane = this.planes.filter( ( i,el ) => $(el).attr('id') === this.clickedId);
+    let myPlane = this.faces.filter( ( i,el ) => $(el).attr('id') === this.clickedId);
 
     myPlane.addClass("focus")
   }
 
-  planeClickEvent(flag){
-    if(flag){
-      this.planes.on( 'click', (e)=> {
+  planeClickEvent(){
+    this.faces.on( 'click', (e)=> {
+      if( ! this.motionData.isAboutToStop ){
+        console.log('bb');
         let target = $(e.currentTarget);
         e.stopPropagation();
         this.getTargetAngle(e);
         this.clickedId = e.target.id;
 
         let direction = this.shouldChangeDirection();
+        this.motionData.isAboutToStop = true;
         this.easing = this.computeEasing(direction);
 
         target.css('cursor', 'initial');
@@ -246,20 +249,20 @@ class tetragon3d extends htmlElement{
         $('body')
           .css('cursor', 'pointer')
           .one('click', (e) => {
+            this.motionData.isAboutToStop = false;
             target.css('cursor', 'pointer');
             $(e.currentTarget).css('cursor', 'initial');
             this.restoreAnimation();
           });
+      }
 
-      } )
-    } else {
-      this.planes.off()
-    }
+    })
+
 
   }
 
   restoreAnimation(){
-    let targetPlane = this.planes
+    let targetPlane = this.faces
       .filter( ( i,el ) => $(el).attr('id') === this.clickedId);
       targetPlane.removeClass("focus");
     this.easing = [];
@@ -275,7 +278,7 @@ class tetragon3d extends htmlElement{
   }
 
   accelerate(){
-    this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.01 ).toFixed(2) );
+    this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.005 ).toFixed(3) );
   }
 
   addDynamicContent(){
@@ -292,6 +295,6 @@ $(() => {
 
 
   myElement.animateElement();
-  myElement.planeClickEvent(true);
+  myElement.planeClickEvent();
 
 });
