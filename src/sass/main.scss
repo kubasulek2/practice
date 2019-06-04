@@ -40,13 +40,7 @@ body {
       //opacity: .8;
       border-radius: 10px;
       backface-visibility: hidden;
-      transition:
-              opacity .5s ease-out 0s,
-              transform 1s ease-in-out .6s;
-
-      /*&.focus{
-        opacity: 1;
-      }*/
+      transition: transform 1s ease-in-out;
     }
 
     &>.face{
@@ -66,30 +60,15 @@ body {
 
       &.front{
         transform: translateZ(285px) rotateY(180deg) scale(.7);
-        &.focus{
-          transform: translateZ(285px) rotateY(180deg) scale(1);
-        }
       }
       &.right{
         transform: translateX(285px) rotateY(-90deg) scale(.7);
-        &.focus{
-          transform: translateX(285px) rotateY(-90deg) scale(1);
-
-        }
       }
       &.back{
         transform: translateZ(-285px) rotateY(0deg) scale(.7);
-        &.focus{
-          transform: translateZ(-285px) rotateY(0deg) scale(1);
-
-        }
       }
       &.left{
         transform: translateX(-285px) rotateY(90deg) scale(.7);
-        &.focus{
-          transform: translateX(-285px) rotateY(90deg) scale(1);
-
-        }
       }
     }
 

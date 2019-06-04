@@ -18,7 +18,7 @@ class tetragon3d extends htmlElement{
     super(element);
     this.rotationSpeed = speed > 1 ? 1 : speed;
     this.clickedId =  '';
-    this.planes = this.element.children('div');
+    this.planes = this.element.children('.face');
     this.speedMeasure = {
       start: undefined,
       stop: undefined,
@@ -218,19 +218,27 @@ class tetragon3d extends htmlElement{
 
     let myPlane = this.planes.filter( ( i,el ) => $(el).attr('id') === this.clickedId);
 
-        myPlane.addClass("focus")
-      .css('opacity', '1')
-      .css('font-size', '50px')
+    myPlane.addClass("focus")
   }
 
   planeClickEvent(flag){
     if(flag){
       this.planes.on( 'click', (e)=> {
+        e.stopPropagation();
         this.getTargetAngle(e);
         this.clickedId = e.target.id;
 
         let direction = this.shouldChangeDirection();
         this.easing = this.computeEasing(direction);
+
+        $(e.target).css('cursor', 'initial');
+
+        $('body')
+          .css('cursor', 'pointer')
+          .one('click', (e) => {
+            $(e.target).css('cursor', 'initial')
+            this.restoreAnimation();
+          });
 
       } )
     } else {
@@ -239,13 +247,28 @@ class tetragon3d extends htmlElement{
 
   }
 
+  restoreAnimation(){
+    let targetPlane = this.planes
+      .filter( ( i,el ) => $(el).attr('id') === this.clickedId);
+      targetPlane.removeClass("focus");
+    this.easing = [];
+    this.motionData.move = true;
+    this.motionData.targetAngle = undefined;
+    this.clickedId = '';
 
+    targetPlane.one('transitionend',  () => {
+      this.animateRotationY();
+    })
+
+  }
 
 }
 
+let myElement = new tetragon3d($('#top-layer'),.5);
+
 $(() => {
 
-  let myElement = new tetragon3d($('#top-layer'),.5);
+
   myElement.animateRotationY();
   myElement.planeClickEvent(true);
 
