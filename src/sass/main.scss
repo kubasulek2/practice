@@ -1,113 +1,96 @@
-html, body{
+*{
+  box-sizing: border-box;
   margin: 0;
-  height: 100%;
-  width: 100%;
+  padding: 0;
+  list-style-type: none;
 }
+
+
 body {
-  perspective: 1000px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #3f3f3f;
 }
-
-#viewport{
-  transform-style: preserve-3d;
-  position: relative;
-  width: 1000px;
-  height: 500px;
+ul {
+  font-family: Roboto, sans-serif;
+  font-size: 150px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-
-  #top-layer{
-    flex-shrink: 0;
-    position: relative;
-    width: 570px;
-    height: 570px;
-    //background: rosybrown;
-    transform: translateZ(-250px) rotateY(0deg);
-    transform-style: preserve-3d;
-
-
-
-
-    &>.face, &>.back-face{
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      //opacity: .8;
-      border-radius: 10px;
-      backface-visibility: hidden;
-      transition: transform 1s ease-in-out;
-    }
-
-    &>.face{
-      background: url("https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 50px;
-      font-weight: 500;
-      font-family: Arial, Helvetica, sans-serif;
-      text-transform: uppercase;
-    }
-
-    #front{
-      transform: translateZ(285px) scale(.7);
-      &.focus{
-        transform: translateZ(285px) scale(1);
-      }
-    }
-    #right{
-      transform: translateX(285px) rotateY(90deg) scale(.7);
-      &.focus{
-        transform: translateX(285px) rotateY(90deg) scale(1);
-
-      }
-    }
-    #back{
-      transform: translateZ(-285px) rotateY(180deg) scale(.7);
-      &.focus{
-        transform: translateZ(-285px) rotateY(180deg) scale(1);
-
-      }
-    }
-    #left{
-      transform: translateX(-285px) rotateY(-90deg) scale(.7);
-      &.focus{
-        transform: translateX(-285px) rotateY(-90deg) scale(1);
-
-      }
-    }
-
-    &>.back-face{
-      background: #6b6b6b;
-
-      &.front{
-        transform: translateZ(285px) rotateY(180deg) scale(.7);
-      }
-      &.right{
-        transform: translateX(285px) rotateY(-90deg) scale(.7);
-      }
-      &.back{
-        transform: translateZ(-285px) rotateY(0deg) scale(.7);
-      }
-      &.left{
-        transform: translateX(-285px) rotateY(90deg) scale(.7);
-      }
-    }
+  text-transform: uppercase;
+  color: #3f3f3f;
+  li {
+    animation: bulb 4s linear infinite;
   }
 }
-
-@keyframes rotateTop {
-  from{
-    transform: translateZ(-250px) rotateY(0deg);
+@keyframes bulb {
+  0%{
+    text-shadow: none;
+    color: rgba(255,255,153,0);
   }
-  to{
-    transform: translateZ(-250px) rotateY(-360deg);
+  25%{
+    text-shadow: none;
+    color: rgba(255,255,153,0);
+  }
+  40%{
+    text-shadow:
+            0 0 10px rgba(255,255,153,.8),
+            0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+  44%{
+    text-shadow:
+            0 0 10px rgba(255,255,153,.8),
+            0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+
+  48%{
+    text-shadow:
+            0 0 6px rgba(255,255,153,.4),
+            0 0 25px rgba(255,165,0, .3);
+    color: rgba(255,255,183,.5);
+  }
+  51%{
+    text-shadow:
+            0 0 6px rgba(255,255,153,.2),
+            0 0 25px rgba(255,165,0, .1);
+    color: rgba(255,255,183,.5);
+  }
+
+  55%{
+    text-shadow:
+            0 0 10px rgba(255,255,153,.8),
+            0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+  60%{
+    text-shadow:
+            0 0 10px rgba(255,255,153,.9),
+            0 0 50px rgba(255,165,0, .8);
+    color: rgba(255,255,153,.9);
+  }
+  63%{
+    text-shadow:
+            0 0 6px rgba(255,255,153,.4),
+            0 0 25px rgba(255,165,0, .3);
+    color: rgba(255,255,183,.5);
+  }
+  67%{
+    text-shadow:
+            0 0 10px rgba(255,255,153,.8),
+            0 0 50px rgba(255,165,0, .7);
+    color: rgba(255,255,153,.9);
+  }
+
+  72%{
+    text-shadow:
+            0 0 13px rgba(255,255,153,.9),
+            0 0 65px rgba(255,165,0, .8);
+    color: rgba(255,255,153,.9);
+  }
+  88%{
+    text-shadow: none;
+    color: rgba(255,255,153,0);
   }
 }
-
