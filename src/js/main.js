@@ -19,8 +19,8 @@ class tetragon3d extends htmlElement{
     this.baseSpeed = speed > 1 ? 1 : speed;
     this.rotationSpeed = speed > 1 ? 1 : speed;
     this.clickedId =  '';
-    this.content = 1;
     this.planes = this.element.children('.face');
+    this.easing = [];
     this.speedMeasure = {
       start: undefined,
       stop: undefined,
@@ -33,21 +33,26 @@ class tetragon3d extends htmlElement{
       targetAngle: undefined,
       move: true
     };
-    this.easing = [];
+    this.dynamicContent = {
+      content: 1,
+      faceToAdd: 1
+    }
   }
   calculateEntryValues() {
     this.speedMeasure.avgSpeed = (30 / ( this.rotationSpeed * 60 ) );
 
   }
 
-  animateRotationY() {
+  animateElement() {
 
     if ( !this.speedMeasure.avgSpeed ) this.calculateEntryValues();
 
     if ( this.motionData.move ){
 
       let rotationSpeed = this.computeRotatingTime();
+
       this.computeAvgSpeed(rotationSpeed);
+      this.addDynamicContent();
 
       if (this.easing.length !== 0) this.applyEasing();
 
@@ -66,7 +71,7 @@ class tetragon3d extends htmlElement{
         this.element.css( "transform", ` translateZ(-250px) rotateY(${this.motionData.targetAngle}deg)` )
       }
 
-      window.requestAnimationFrame( ()=> this.animateRotationY() )
+      window.requestAnimationFrame( ()=> this.animateElement() )
     }
     else {
       this.animatePlane();
@@ -148,9 +153,6 @@ class tetragon3d extends htmlElement{
     let currentAngle = Math.abs( Math.floor(this.motionData.currentAngle) );
     let rotationTime;
     let flag = !(currentAngle % 31);
-
-    this.setDynamicContent();
-
 
     // return if current angle haven't change from last measurement
     if (this.speedMeasure.lastMeasuredAngle === currentAngle){
@@ -267,7 +269,7 @@ class tetragon3d extends htmlElement{
     this.rotationSpeed = this.rotationSpeed < 0 ? -this.rotationSpeed : this.rotationSpeed;
 
     targetPlane.one('transitionend',  () => {
-      this.animateRotationY();
+      this.animateElement();
     })
 
   }
@@ -276,10 +278,8 @@ class tetragon3d extends htmlElement{
     this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.01 ).toFixed(2) );
   }
 
-  setDynamicContent(){
-   /* if ( !(this.motionData.currentAngle % 90) ){
-      this.content = this.content + 1
-    }*/
+  addDynamicContent(){
+
 
   }
 
@@ -291,7 +291,7 @@ let myElement = new tetragon3d($('#top-layer'),.5);
 $(() => {
 
 
-  myElement.animateRotationY();
+  myElement.animateElement();
   myElement.planeClickEvent(true);
 
 });
