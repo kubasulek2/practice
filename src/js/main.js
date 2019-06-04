@@ -16,6 +16,7 @@ class htmlElement {
 class tetragon3d extends htmlElement{
   constructor(element ,speed){
     super(element);
+    this.baseSpeed = speed > 1 ? 1 : speed;
     this.rotationSpeed = speed > 1 ? 1 : speed;
     this.clickedId =  '';
     this.planes = this.element.children('.face');
@@ -48,6 +49,8 @@ class tetragon3d extends htmlElement{
       this.computeAvgSpeed(rotationSpeed);
 
       if (this.easing.length !== 0) this.applyEasing();
+
+      if(this.easing.length === 0 && this.rotationSpeed < this.baseSpeed) this.accelerate();
 
 
       this.motionData.currentAngle -= this.rotationSpeed;
@@ -200,6 +203,7 @@ class tetragon3d extends htmlElement{
         break;
     }
   }
+
   shouldChangeDirection(){
     let direction = "forth";
     if( this.motionData.targetAngle === 0 ){
@@ -224,6 +228,7 @@ class tetragon3d extends htmlElement{
   planeClickEvent(flag){
     if(flag){
       this.planes.on( 'click', (e)=> {
+        let target = $(e.target);
         e.stopPropagation();
         this.getTargetAngle(e);
         this.clickedId = e.target.id;
@@ -231,12 +236,13 @@ class tetragon3d extends htmlElement{
         let direction = this.shouldChangeDirection();
         this.easing = this.computeEasing(direction);
 
-        $(e.target).css('cursor', 'initial');
+        target.css('cursor', 'initial');
 
         $('body')
           .css('cursor', 'pointer')
           .one('click', (e) => {
-            $(e.target).css('cursor', 'initial')
+            target.css('cursor', 'pointer');
+            $(e.target).css('cursor', 'initial');
             this.restoreAnimation();
           });
 
@@ -255,11 +261,16 @@ class tetragon3d extends htmlElement{
     this.motionData.move = true;
     this.motionData.targetAngle = undefined;
     this.clickedId = '';
+    this.rotationSpeed = this.rotationSpeed < 0 ? -this.rotationSpeed : this.rotationSpeed;
 
     targetPlane.one('transitionend',  () => {
       this.animateRotationY();
     })
 
+  }
+
+  accelerate(){
+    this.rotationSpeed =  this.rotationSpeed + 0.01
   }
 
 }

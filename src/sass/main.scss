@@ -55,23 +55,6 @@ body {
       text-transform: uppercase;
     }
 
-    &>.back-face{
-      background: #6b6b6b;
-
-      &.front{
-        transform: translateZ(285px) rotateY(180deg) scale(.7);
-      }
-      &.right{
-        transform: translateX(285px) rotateY(-90deg) scale(.7);
-      }
-      &.back{
-        transform: translateZ(-285px) rotateY(0deg) scale(.7);
-      }
-      &.left{
-        transform: translateX(-285px) rotateY(90deg) scale(.7);
-      }
-    }
-
     #front{
       transform: translateZ(285px) scale(.7);
       &.focus{
@@ -97,6 +80,23 @@ body {
       &.focus{
         transform: translateX(-285px) rotateY(-90deg) scale(1);
 
+      }
+    }
+
+    &>.back-face{
+      background: #6b6b6b;
+
+      &.front{
+        transform: translateZ(285px) rotateY(180deg) scale(.7);
+      }
+      &.right{
+        transform: translateX(285px) rotateY(-90deg) scale(.7);
+      }
+      &.back{
+        transform: translateZ(-285px) rotateY(0deg) scale(.7);
+      }
+      &.left{
+        transform: translateX(-285px) rotateY(90deg) scale(.7);
       }
     }
   }
