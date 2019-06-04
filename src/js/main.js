@@ -36,7 +36,7 @@ class tetragon3d extends htmlElement{
     };
     this.dynamicContent = {
       content: 1,
-      faceToAdd: 1
+      willUpdate: true
     }
   }
   calculateEntryValues() {
@@ -53,7 +53,7 @@ class tetragon3d extends htmlElement{
       let rotationSpeed = this.computeRotatingTime();
 
       this.computeAvgSpeed(rotationSpeed);
-      this.addDynamicContent();
+      this.updateContent();
 
       if (this.easing.length !== 0) this.applyEasing();
 
@@ -234,7 +234,7 @@ class tetragon3d extends htmlElement{
   planeClickEvent(){
     this.faces.on( 'click', (e)=> {
       if( ! this.motionData.isAboutToStop ){
-        console.log('bb');
+
         let target = $(e.currentTarget);
         e.stopPropagation();
         this.getTargetAngle(e);
@@ -281,9 +281,29 @@ class tetragon3d extends htmlElement{
     this.rotationSpeed =  parseFloat( ( this.rotationSpeed + 0.005 ).toFixed(3) );
   }
 
-  addDynamicContent(){
+  updateContent(){
 
+    if ( this.motionData.currentAngle < -10 && this.motionData.currentAngle > -20 && this.dynamicContent.willUpdate){
 
+      this.dynamicContent.content = this.dynamicContent.content +2;  //3/7/11...
+      this.dynamicContent.willUpdate = false;
+      $(this.faces[2]).text(`face ${this.dynamicContent.content}`);
+      $(this.faces[3]).text(`face ${this.dynamicContent.content +1}`);
+
+    } else if (this.motionData.currentAngle < -20 && this.motionData.currentAngle > -30 && !this.dynamicContent.willUpdate){
+
+      this.dynamicContent.willUpdate = true
+
+    } else if ( this.motionData.currentAngle < -180 && this.motionData.currentAngle > -190 && this.dynamicContent.willUpdate ){
+
+      this.dynamicContent.content = this.dynamicContent.content +2; // 5/9/13...
+      this.dynamicContent.willUpdate = false;
+      $(this.faces[0]).text(`face ${this.dynamicContent.content}`);
+      $(this.faces[1]).text(`face ${this.dynamicContent.content + 1}`);
+    } else if ( this.motionData.currentAngle < -190 && this.motionData.currentAngle > -200 && !this.dynamicContent.willUpdate){
+
+      this.dynamicContent.willUpdate = true
+    }
   }
 
 
