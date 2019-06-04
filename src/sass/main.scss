@@ -15,7 +15,6 @@ body {
   position: relative;
   width: 1000px;
   height: 500px;
-  //background: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,30 +32,64 @@ body {
 
 
 
-    &>div{
+    &>.face, &>.back-face{
       cursor: pointer;
       width: 100%;
       height: 100%;
       position: absolute;
-      background: url("https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") center;
+      //opacity: .8;
+      border-radius: 10px;
+      backface-visibility: hidden;
+      transition:
+              opacity .5s ease-out 0s,
+              transform 1s ease-in-out .6s;
+
+      /*&.focus{
+        opacity: 1;
+      }*/
+    }
+
+    &>.face{
+      background: url("https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       font-size: 50px;
       font-weight: 500;
-      //backface-visibility: hidden;
       font-family: Arial, Helvetica, sans-serif;
       text-transform: uppercase;
-      //opacity: .8;
-      border-radius: 10px;
-      overflow: hidden;
-      transition:
-              opacity .5s ease-out 0s,
-              transform 1s ease-in-out .6s;
+    }
 
-      &.focus{
-        opacity: 1;
+    &>.back-face{
+      background: #6b6b6b;
+
+      &.front{
+        transform: translateZ(285px) rotateY(180deg) scale(.7);
+        &.focus{
+          transform: translateZ(285px) rotateY(180deg) scale(1);
+        }
+      }
+      &.right{
+        transform: translateX(285px) rotateY(-90deg) scale(.7);
+        &.focus{
+          transform: translateX(285px) rotateY(-90deg) scale(1);
+
+        }
+      }
+      &.back{
+        transform: translateZ(-285px) rotateY(0deg) scale(.7);
+        &.focus{
+          transform: translateZ(-285px) rotateY(0deg) scale(1);
+
+        }
+      }
+      &.left{
+        transform: translateX(-285px) rotateY(90deg) scale(.7);
+        &.focus{
+          transform: translateX(-285px) rotateY(90deg) scale(1);
+
+        }
       }
     }
 

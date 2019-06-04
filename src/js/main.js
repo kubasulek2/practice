@@ -56,8 +56,11 @@ class tetragon3d extends htmlElement{
       this.element.css( "transform", ` translateZ(-250px) rotateY(${this.motionData.currentAngle}deg)` );
 
       // targetAngle is set in click event, so after click event rotation will stop
-      if( Math.ceil(this.motionData.currentAngle) === this.motionData.targetAngle )
+
+      if( Math.round(this.motionData.currentAngle) === this.motionData.targetAngle ){
         this.motionData.move = false;
+        this.element.css( "transform", ` translateZ(-250px) rotateY(${this.motionData.targetAngle}deg)` )
+      }
 
       window.requestAnimationFrame( ()=> this.animateRotationY() )
     }
