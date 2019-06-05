@@ -15,13 +15,23 @@
 <body>
 
 <svg width="600" height="600">
+  <defs>
+    <g id="circle">
+      <circle r="25" fill="dodgerblue"/>
+    </g>
+  </defs>
   <path d="M0 0, 598 600, 598 0 Z" fill="red" stroke="red" stroke-width="4"/>
   <path d="M600 600, 0 0, 0 600 Z" fill="lightblue" />
   <path transform="translate(0, 0)" d="M0 300  C100 0, 500 0, 600 300 Q300 0, 0 300"  stroke="lightgreen" stroke-width="3" fill="lightgreen"/>
-  <text x="300" y="300" stroke="none" font-family=Roboto font-size="100" fill="white" opacity=".8" text-anchor="middle" alignment-baseline="middle">Middle</text>
-
-
-
+  <a href="http://www.kubasulek2.pl/alien_invasion" target="_blank">
+    <text  x="300" y="300" stroke="none" font-family=Roboto font-size="100" fill="white" opacity=".9" text-anchor="middle" alignment-baseline="middle">Middle</text>
+  </a>
+  <g id="circles" transform="translate(100,0)">
+    <use href="#circle" x="260" y="365"/>
+    <use href="#circle" x="285" y="365"/>
+    <use href="#circle" x="310" y="365"/>
+    <use href="#circle" x="335" y="365"/>
+  </g>
 </svg>
 
 
