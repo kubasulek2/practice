@@ -13,84 +13,16 @@ body {
   align-items: center;
   background: #3f3f3f;
 }
-ul {
-  font-family: Roboto, sans-serif;
-  font-size: 150px;
-  display: flex;
-  text-transform: uppercase;
-  color: #3f3f3f;
-  li {
-    animation: bulb 4s linear infinite;
-  }
+
+svg{
+  background: white;
 }
-@keyframes bulb {
-  0%{
-    text-shadow: none;
-    color: rgba(255,255,153,0);
-  }
-  25%{
-    text-shadow: none;
-    color: rgba(255,255,153,0);
-  }
-  40%{
-    text-shadow:
-            0 0 10px rgba(255,255,153,.8),
-            0 0 50px rgba(255,165,0, .7);
-    color: rgba(255,255,153,.9);
-  }
-  44%{
-    text-shadow:
-            0 0 10px rgba(255,255,153,.8),
-            0 0 50px rgba(255,165,0, .7);
-    color: rgba(255,255,153,.9);
-  }
 
-  48%{
-    text-shadow:
-            0 0 6px rgba(255,255,153,.4),
-            0 0 25px rgba(255,165,0, .3);
-    color: rgba(255,255,183,.5);
-  }
-  51%{
-    text-shadow:
-            0 0 6px rgba(255,255,153,.2),
-            0 0 25px rgba(255,165,0, .1);
-    color: rgba(255,255,183,.5);
-  }
-
-  55%{
-    text-shadow:
-            0 0 10px rgba(255,255,153,.8),
-            0 0 50px rgba(255,165,0, .7);
-    color: rgba(255,255,153,.9);
-  }
-  60%{
-    text-shadow:
-            0 0 10px rgba(255,255,153,.9),
-            0 0 50px rgba(255,165,0, .8);
-    color: rgba(255,255,153,.9);
-  }
-  63%{
-    text-shadow:
-            0 0 6px rgba(255,255,153,.4),
-            0 0 25px rgba(255,165,0, .3);
-    color: rgba(255,255,183,.5);
-  }
-  67%{
-    text-shadow:
-            0 0 10px rgba(255,255,153,.8),
-            0 0 50px rgba(255,165,0, .7);
-    color: rgba(255,255,153,.9);
-  }
-
-  72%{
-    text-shadow:
-            0 0 13px rgba(255,255,153,.9),
-            0 0 65px rgba(255,165,0, .8);
-    color: rgba(255,255,153,.9);
-  }
-  88%{
-    text-shadow: none;
-    color: rgba(255,255,153,0);
+@keyframes spin {
+  from{
+    transform: rotateZ(0deg);
+    to{
+      transform: rotateZ(360deg);
+    }
   }
 }
