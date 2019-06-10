@@ -1,7 +1,3 @@
-$darken: 60%;
-
-$color: rgb(255,255,255);
-$color-alpha: darken( $color, $darken );
 
 *{
   box-sizing: border-box;
@@ -25,32 +21,6 @@ body {
   color: white;
   font-family: Roboto;
   text-rendering: optimizeLegibility;
-  background: url("https://images.pexels.com/photos/418831/pexels-photo-418831.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940") center center/cover no-repeat;
 }
-.mask{
-  width: 100%;
-  height: 450px;
-  z-index: 2;
-}
-svg{
-  #mask{
-    width: 100%;
-    height: 100%;
-  }
-  #base{
-    width: 100%;
-    height: 100%;
-    fill: rgb(0,0,0);
-    mask: url("#mask");
-  }
-  #alpha{
 
-    fill: darken(white, 40%);
-  }
-  text{
-    font-size: 100px;
-    font-weight: bold;
 
-  }
-
-}

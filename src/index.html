@@ -13,18 +13,18 @@
 
 </head>
 <body>
-<div class="mask" x="0" y="0">
-  <svg width="100%" height="100%">
+
+  <svg width="500" height="500"  style="border: 2px solid aqua">
     <defs>
-    <mask id="mask" x="0" y="0">
-      <rect id="alpha" x="0" y="0" width="100%"; height="100%";/>
-      <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">Some text in the middle</text>
-    </mask>
+      <linearGradient id="orange" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5C8696" />
+      <stop offset="100%" stop-color="#7c9eab" />
+      </linearGradient>
     </defs>
-    <rect x="0" y="0" id="base" width="100%" height="100%" />
+    <rect x="25%" y="25%" width="50%" height="50%" fill="url(#orange)"/>
   </svg>
-  <embed src="images/svg.svg" type="image/svg+hml">
-</div>
+
+
 
 
 <script src="js/vendor/jquery-3.3.1.min.js"></script>
