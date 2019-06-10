@@ -16,12 +16,17 @@
 
   <svg width="500" height="500"  style="border: 2px solid aqua">
     <defs>
-      <linearGradient id="orange" x1="1" y1="0" x2="0" y2="1">
+      <linearGradient id="linear" x1="1" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#5C8696" />
       <stop offset="100%" stop-color="#7c9eab" />
       </linearGradient>
+      <radialGradient id="radial" cx="50%" cy="50%" r="50%" fx="70%" fy="70%">
+        <stop offset="0%" stop-color="white" />
+        <stop offset="100%" stop-color="#ECB218" />
+      </radialGradient>
     </defs>
-    <rect x="25%" y="25%" width="50%" height="50%" fill="url(#orange)"/>
+    <rect x="5%" y="5%" width="50%" height="50%" fill="url(#linear)"/>
+    <circle r="25%" cx="75%" cy="75%" fill="url(#radial)" />
   </svg>
 
 
