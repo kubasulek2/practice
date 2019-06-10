@@ -13,8 +13,8 @@
 
 </head>
 <body>
-
-  <svg width="500" height="500"  style="border: 2px solid aqua">
+<div class="container">
+  <svg id="fluid" viewBox="0,0,500,250">
     <defs>
       <linearGradient id="linear" x1="1" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#5C8696" />
@@ -25,12 +25,10 @@
         <stop offset="100%" stop-color="#ECB218" />
       </radialGradient>
     </defs>
-    <rect x="5%" y="5%" width="50%" height="50%" fill="url(#linear)"/>
-    <circle r="25%" cx="75%" cy="75%" fill="url(#radial)" />
+    <rect x="25" y="25" width="200" height="200" fill="url(#linear)"/>
+    <circle r="100" cx="375" cy="125" fill="url(#radial)" />
   </svg>
-
-
-
+</div>
 
 <script src="js/vendor/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>

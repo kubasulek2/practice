@@ -23,4 +23,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.container{
+  width: 60%;
+  height: auto;
+  background: rosybrown;
 
+  #fluid{
+    display: block;
+    background: red;
+  }
+}
