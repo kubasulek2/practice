@@ -13,6 +13,12 @@
 
 </head>
 <body>
+<!--defs only-->
+<svg>
+  <symbol id="box" viewBox="0,0,50,50">
+    <rect height="50" width="50" fill="red" />
+  </symbol>
+</svg>
 <div class="container">
   <svg id="fluid" viewBox="0,0,500,250">
     <defs>
@@ -27,6 +33,7 @@
     </defs>
     <rect x="25" y="25" width="200" height="200" fill="url(#linear)"/>
     <circle r="100" cx="375" cy="125" fill="url(#radial)" />
+    <use x="450" y="200" width="50" height="50" xlink:href="#box"/>
   </svg>
 </div>
 

@@ -28,14 +28,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  height: auto;
   background: rosybrown;
 
   #fluid{
-    width: 600px;
-    height: 300px;
+    width: auto;
+    height: 400px;
     display: block;
-    background: red;
+    //background: red;
   }
 }
