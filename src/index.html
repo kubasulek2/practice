@@ -13,30 +13,13 @@
 
 </head>
 <body>
-<!--defs only-->
-<svg>
-  <symbol id="box" viewBox="0,0,50,50">
-    <rect height="50" width="50" fill="red" />
-  </symbol>
-</svg>
+
 <div class="container">
-  <svg id="fluid" viewBox="0,0,500,250">
-    <defs>
-      <linearGradient id="linear" x1="1" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#5C8696" />
-      <stop offset="100%" stop-color="#7c9eab" />
-      </linearGradient>
-      <radialGradient id="radial" cx="50%" cy="50%" r="50%" fx="70%" fy="70%">
-        <stop offset="0%" stop-color="white" />
-        <stop offset="100%" stop-color="#ECB218" />
-      </radialGradient>
-    </defs>
-    <rect x="25" y="25" width="200" height="200" fill="url(#linear)"/>
-    <circle r="100" cx="375" cy="125" fill="url(#radial)" />
-    <use x="450" y="200" width="50" height="50" xlink:href="#box"/>
-  </svg>
+  <div class="circle"></div>
+  <div class="box"></div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 <script src="js/vendor/jquery-3.3.1.min.js"></script>
 <script src="js/main.js"></script>
 </body>

@@ -11,8 +11,6 @@ html, body{
   height: 100%;
 }
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,20 +18,24 @@ body {
   font-size: 100px;
   color: white;
   font-family: Roboto;
-  text-rendering: optimizeLegibility;
 }
 
 .container{
-  padding: 2rem 0 2rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 80%;
   background: rosybrown;
-
-  #fluid{
-    width: auto;
-    height: 400px;
-    display: block;
-    //background: red;
-  }
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 60vh;
+}
+.circle{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: royalblue;
+}
+.box{
+  width: 200px;
+  height: 200px;
+  background: darkmagenta;
 }
