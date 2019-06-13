@@ -28,14 +28,20 @@ body {
   display: flex;
   height: 60vh;
 }
+.box{
+  width: 200px;
+  height: 200px;
+  background: darkmagenta;
+}
 .circle{
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background: royalblue;
-}
-.box{
-  width: 200px;
-  height: 200px;
-  background: darkmagenta;
+  div{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: red
+  }
 }
