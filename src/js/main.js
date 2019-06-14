@@ -14,28 +14,32 @@ $(() => {
 	tlNav
 		.to('nav', .5, {
 			autoAlpha: 1
-		})
-		.staggerFromTo('nav li', .6, {
+		}).staggerFrom("nav li", 2, {scale:0.5, opacity:0, rotationY: -90, ease:Elastic.easeOut, force3D:true}, 0.2);
+		/* .staggerFromTo('nav li', .6, {
 			opacity: 0,
-			y: 100
+			y: 100,
+			scale: 0.8,
+			force3d: true
 
 		},
 		{
 			opacity: 1,
 			y: 0,
-			ease: Back.easeOut
-		}, .1)
-		.to('.closeButton', .3, {
-			autoAlpha: 1
-		});
+			scale: 1,
+			ease: Elastic.easeOut,
+			force3d: true
+		}, .1) */
+		// .to('.closeButton', .3, {
+		// 	autoAlpha: 1
+		//});
 
 	$(burgerIcon)
 		.on('click', function () {
-			tml.play(0);
+			tlNav.play(0);
 		});
 
 	$('.closeButton').on('click', function () {
-		tml.reverse(0);
+		tlNav.reverse(0);
 	});
 
 	//Hero Section

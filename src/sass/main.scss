@@ -41,6 +41,11 @@ justify-content: center;
 align-items: center;
 text-align: center;
 background-color: #0074c4; 
+perspective: 300px;
+transform-style: preserve-3d;
+li{
+	display: block;
+}
 }
 
 .closeButton {
@@ -71,6 +76,7 @@ margin-bottom: 10px;
 
 .navMenu {
 flex-flow: column wrap;
+transform-style: preserve-3d;
 }
 
 .navMenu li {
