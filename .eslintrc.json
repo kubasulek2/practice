@@ -25,7 +25,7 @@
             "single"
         ],
         "semi": [
-            "error",
+            2,
             "always"
 				],
 				"no-undef": 0
