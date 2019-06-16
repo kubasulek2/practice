@@ -13,20 +13,20 @@ $(() => {
 	});
 	tlNav.to('nav', .5, {
 		autoAlpha: 1
-	}).staggerFrom("nav li", 2, { scale: 0.5, opacity: 0, rotationY: -90, ease: Elastic.easeOut, force3D: true }, 0.2);
+	}).staggerFrom('nav li', .5, { x: -200, opacity: 0 }, .1).staggerFrom('nav li', .6, { rotationY: -90, ease: Back.easeOut, delay: -0.4 }, .2);
 	/* .staggerFromTo('nav li', .6, {
- 	opacity: 0,
- 	y: 100,
- 	scale: 0.8,
- 	force3d: true
- 	},
- {
- 	opacity: 1,
- 	y: 0,
- 	scale: 1,
- 	ease: Elastic.easeOut,
- 	force3d: true
- }, .1) */
+ 		opacity: 0,
+ 		y: 100,
+ 		scale: 0.8,
+ 		force3d: true
+ 		},
+ 	{
+ 		opacity: 1,
+ 		y: 0,
+ 		scale: 1,
+ 		ease: Elastic.easeOut,
+ 		force3d: true
+ 	}, .1) */
 	// .to('.closeButton', .3, {
 	// 	autoAlpha: 1
 	//});
