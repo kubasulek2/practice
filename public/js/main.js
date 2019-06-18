@@ -91,10 +91,11 @@
 // });	
 $(() => {
 	function transition() {
-		const background = $('.background');
-		const tm = new TimelineMax();
+		const background = $('.background'),
+		      columnFill = $('.column > div'),
+		      tm = new TimelineMax();
 
-		tm.to(background, .3, { y: 0 });
+		tm.to(background, .3, { y: 0 }).to(columnFill, .7, { skewY: 90, scale: .81, x: '-20%' }, '+=.3');
 	}
 
 	$('#startTransition').on('click', transition);

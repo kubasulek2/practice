@@ -1,9 +1,9 @@
 // $(() => {
 // 	console.time('load');
-	
+
 // 	$(window).on('load', () => {
 // 		console.timeEnd('load');
-		
+
 // 	});
 // 	const burgerIcon = $('.burgerIcon');
 // 	const tlNav = new TimelineMax({ paused: true });
@@ -64,18 +64,18 @@
 // 		TweenMax.to(this, .5, { scale: 1, y: 0 });
 // 		TweenMax.to(this, .5, { boxShadow: '0 0 20px rgba(0,0,0,0.06)'});
 // 	}	);
-	
+
 // 	//Services
-	
+
 // 	TweenMax.set('.serviceBoxInner', { y: 200 });
-	
+
 // 	$('.serviceBox').hover(function () {
 // 		TweenMax.to($(this).find('.serviceBoxInner'), .6, {
 // 			opacity: 1,
 // 			y: 0,
 // 			ease: Power3.easeOut
 // 		});	
-			
+
 // 	}, function () {
 // 		TweenMax.to($(this).find('.serviceBoxInner'), .6, {
 // 			opacity: 0,
@@ -83,18 +83,22 @@
 // 			ease: Power3.easeIn
 // 		});	
 // 	});
-	
+
 // 	// COGS
-	
+
 // 	TweenMax.to('.cogRight', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // 	TweenMax.to('.cogLeft', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // });	
 $(() => {
 	function transition() {
-		const background = $('.background');
-		const tm = new TimelineMax();
-		
-		tm.to(background, .3, {y: 0 });
+		const
+			background = $('.background'),
+			columnFill = $('.column > div'),
+			tm = new TimelineMax();
+
+		tm
+			.to(background, .3, { y: 0 })
+			.to(columnFill, .7, { skewY: 90, scale: .81, x: '-20%'}, '+=.3');
 	}
 
 	$('#startTransition').on('click', transition);
