@@ -89,5 +89,14 @@
 // 	TweenMax.to('.cogRight', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // 	TweenMax.to('.cogLeft', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // });	
-$(() => {});
+$(() => {
+	function transition() {
+		const background = $('.background');
+		const tm = new TimelineMax();
+
+		tm.to(background, .3, { y: 0 });
+	}
+
+	$('#startTransition').on('click', transition);
+});
 //# sourceMappingURL=main.js.map
