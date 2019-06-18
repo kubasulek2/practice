@@ -22,7 +22,7 @@
 // 			autoAlpha: 1
 // 		})
 // 		.staggerFrom('nav li', .5, { x: -200, opacity: 0, }, .1)
-// 		.staggerFrom('nav li', .6, { rotationY: -90, ease: Back.easeOut, delay: -0.4}, .2);
+// 		.staggerFrom('nav li', .6, { rotationY: -90, ease: Back.easeOut.4}, .2);
 // 	/* .staggerFromTo('nav li', .6, {
 // 			opacity: 0,
 // 			y: 100,
@@ -53,7 +53,7 @@
 // 	//Hero Section
 
 // 	TweenMax.fromTo('#hero h1', .6, { x: 200, opacity: 0 }, { x: 0, opacity: 1, ease: Back.easeOut });
-// 	TweenMax.fromTo('.learnMoreButton', .6, { x: -200, opacity: 0 }, { x: 0, opacity: 1, ease: Back.easeOut }).delay(.8);
+// 	TweenMax.fromTo('.learnMoreButton', .6, { x: -200, opacity: 0 }, { x: 0, opacity: 1, ease: Back.easeOut });
 // 	//For col section
 
 // 	$('.fourColItem').hover(function () {
@@ -92,14 +92,21 @@
 $(() => {
 	function transition() {
 		const
+			columnEven = $('.column:nth-child(even)'),
+			columnOdd = $('.column:nth-child(odd)'),
+			columnWrapper = $('.column-wrap'),
 			background = $('.background'),
-			columnFill = $('.column > div'),
 			tm = new TimelineMax();
 
 		tm
 			.to(background, .3, { y: 0 })
-			.to(columnFill, .7, { skewY: 90, scale: .81, x: '-20%'}, '+=.3');
+			.to(columnWrapper, .6, { rotationZ: 0 }, 'synchro')
+			.to(columnEven, .6, { width: 0 }, 'synchro')
+			.to(columnOdd, .6, { width: '12.5%' }, 'synchro')
+			.set(columnWrapper, { background: '#599193' });
+
 	}
 
 	$('#startTransition').on('click', transition);
 });
+
