@@ -99,7 +99,7 @@ $(() => {
 			tm = new TimelineMax();
 
 		tm
-			.to(background, .3, { y: 0 })
+			.to(background, .5, { y: 0, opacity: 1 })
 			.to(columnWrapper, .6, { rotationZ: 0 }, 'synchro')
 			.to(columnEven, .6, { width: 0 }, 'synchro')
 			.to(columnOdd, .6, { width: '12.5%' }, 'synchro')
