@@ -1,7 +1,7 @@
 @import "normalize.scss";
 /*GENERAL STYLES*/
-*{
-	box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 html,
 body {
@@ -13,11 +13,13 @@ body {
   background: #599193;
   position: relative;
   overflow: hidden;
-	display: flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
 #startTransition {
+  z-index: 5;
+  position: relative;
   padding: 1.5rem;
   background: #eee;
   color: #666;
@@ -27,33 +29,36 @@ body {
   text-decoration: none;
 }
 .background {
-  
   width: 50%;
-  height: 50%;
-	transform: translateY(100%);
-	position: absolute;
-	//overflow: hidden;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border: 1px solid red;
-	.column-wrap{
-		position: absolute;
-		width: 140%;
-		height: 300%;
-		display: flex;
-		transform: translate(-15%, -15%)  rotateZ(25deg);	
-		background: #477475;
-	}
-	.column {
+  height: 40%;
+  //transform: translateY(100%);
+  position: absolute;
+  //overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid red;
+  .column-wrap {
+    position: absolute;
+    width: 140%;
+    height: 220%;
+    display: flex;
+    transform: translate(-15%, -25%) rotateZ(25deg);
+    background: #477475;
+    opacity: 0.5;
+  }
+  .column {
     width: 12.5%;
     height: 100%;
-		overflow: hidden;
-		background: #477475;
+    overflow: hidden;
+    background: #477475;
+    opacity: 0.5;
 
     &:nth-child(odd) {
-			background: #599193;
-			width: 0;
-		}
+      background: #599193;
+      width: 0;
+    }
+  }
+  @media screen and(orientation: portrait) {
   }
 }
