@@ -28,15 +28,19 @@ body {
 }
 .background {
   
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
 	transform: translateY(100%);
 	position: absolute;
-	overflow: hidden;
+	//overflow: hidden;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid red;
 	.column-wrap{
 		position: absolute;
 		width: 140%;
-		height: 140%;
+		height: 300%;
 		display: flex;
 		transform: translate(-15%, -15%)  rotateZ(25deg);	
 		background: #477475;

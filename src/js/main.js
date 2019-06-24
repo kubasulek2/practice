@@ -109,4 +109,3 @@ $(() => {
 
 	$('#startTransition').on('click', transition);
 });
-
