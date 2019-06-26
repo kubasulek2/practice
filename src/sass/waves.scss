@@ -2,17 +2,21 @@
 
 #wavesFill{
 	width: 300px;
-	height: auto;
+	height: 300px;
 	border: 2px solid #419afe;
 	overflow: hidden;
 	margin-right: 2em;
-	
+	position: relative;
+
 	svg{
 		display: block;
+	}
+	g#animation{
 		transform: translateY(100%);
-		opacity: .5;
 		animation: fill	3s linear 0.33s forwards;
 	}
+
+		
 	use{
 		fill: #f1bd00
 	}
@@ -29,11 +33,9 @@
 }
 @keyframes fill {
   0% {
-		opacity: .5;
     transform: translateY(100%);
   }
   100% {
-    opacity: 1;
     transform: translateY(-15%);
   }
 }
