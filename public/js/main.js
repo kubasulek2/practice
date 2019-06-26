@@ -113,9 +113,6 @@ $(() => {
 
 		const self = $(this);
 		self.addClass('loading');
-		setTimeout(function () {
-			self.removeClass('loading');
-		}, 4200);
 	});
 });
 //# sourceMappingURL=main.js.map
