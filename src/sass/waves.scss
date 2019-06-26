@@ -2,7 +2,7 @@
 
 #wavesFill{
 	width: 300px;
-	height: 300px;
+	height: auto;
 	border: 2px solid #419afe;
 	overflow: hidden;
 	margin-right: 2em;
@@ -10,6 +10,7 @@
 
 	svg{
 		display: block;
+		background: black;
 	}
 	g#animation{
 		transform: translateY(100%);
