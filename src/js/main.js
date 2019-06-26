@@ -90,7 +90,13 @@
 // 	TweenMax.to('.cogLeft', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // });	
 $(() => {
-	function transition() {
+	function transition(event) {
+		event.preventDefault();
+		
+		const href = $(event.currentTarget).attr('href');
+		
+		
+		const myfunc = () => window.location = href;
 		const
 			columnEven = $('.column:nth-child(even)'),
 			columnOdd = $('.column:nth-child(odd)'),
@@ -103,9 +109,22 @@ $(() => {
 			.to(columnWrapper, .6, { rotationZ: 0 }, 'synchro')
 			.to(columnEven, .6, { width: 0 }, 'synchro')
 			.to(columnOdd, .6, { width: '12.5%' }, 'synchro')
-			.set(columnWrapper, { background: '#599193' });
+			.set(columnWrapper, { background: '#599193' })
+			.add(myfunc);
 
 	}
 
-	$('#startTransition').on('click', transition);
+	$('#startTransition').on('click', () => transition(event));
+
+	$('.upload').on('click touch', function(e) {
+
+		e.preventDefault();
+
+		const self = $(this);
+		self.addClass('loading');
+		setTimeout(function() {
+			self.removeClass('loading');
+		}, 4200);
+	});
+
 });
