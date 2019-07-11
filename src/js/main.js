@@ -1,3 +1,22 @@
+'use strict';
+
+
+let x = {};
+
+Object.defineProperty(x,'readOnly',{
+	value: 2,
+	writable: false,
+	configurable: true,	
+	enumerable: false
+		
+	
+});
+
+Object.defineProperty(x,'readOnly',{
+	writable: true,
+});
+x.readOnly = 3;
+console.log(x );
 // $(() => {
 // 	console.time('load');
 
@@ -124,4 +143,7 @@ $(() => {
 		self.addClass('loading');
 	});
 
+	
 });
+
+	

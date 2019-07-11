@@ -1,7 +1,7 @@
 
 
 #wavesFill{
-	width: 300px;
+	width: 600px;
 	height: auto;
 	border: 2px solid #419afe;
 	overflow: hidden;
@@ -10,23 +10,19 @@
 
 	svg{
 		display: block;
-		background: black;
+		transform: translateY(50%);
+		//animation: fill	10s linear forwards;
+		//background: black;
 	}
-	g#animation{
-		transform: translateY(100%);
-		animation: fill	3s linear 0.33s forwards;
-	}
-
-		
 	use{
 		fill: #f1bd00
 	}
 	#myWave{
 		transform: translateX(-100%);
-		animation: forward 1.5s infinite ease-in-out alternate;
+		animation: waves 10s ease-in-out infinite alternate;
 	}
 	#myWave2{
-		animation: backward 1.5s infinite ease-in-out alternate;
+		//animation: waves2 10s ease-in-out;
 
 	}
 
@@ -40,16 +36,42 @@
     transform: translateY(-15%);
   }
 }
-@keyframes backward {
-  100% {
-    transform: translateX(-50%);
+
+@keyframes waves {
+  20% {
+    transform: translateX(0%);
+	}
+	40% {
+    transform: translateX(-100%);
+	}
+	60% {
+    transform: translateX(0%);
+	}
+	80% {
+    transform: translateX(-100%);
+	}
+	100% {
+    transform: translateX(0%);
   }
 }
-@keyframes forward {
-  100% {
-    transform: translateX(-50%);
+@keyframes waves2 {
+  20% {
+    transform: translateX(-20%);
+	}
+	40% {
+    transform: translateX(0);
+	}
+	60% {
+    transform: translateX(-40%);
+	}
+	80% {
+    transform: translateX(0);
+	}
+	100% {
+    transform: translateX(-40%);
   }
 }
+
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
