@@ -12,11 +12,27 @@
 
 
 </head>
-<svg width="100" height="100" viewBox="0 0 100 100">
-	
-</svg>
+
 <body>
-		<a href="waves.html" id="startTransition">Transition</a>
+
+	<svg width='300' height="300">
+		
+		<defs>
+				<path stroke='yellow' stroke-width="14" fill="none" id="ratingStar" d="M50,152 C50,152 45,152 45,147 L57,100.5 L27,65 C23,61 27,58 30,58 L75,52 L95,10 C98,5 102,5 105,10 L125,52 L170,58 C174,58 177,61 173,65 L143,100.5 L155,147 C155,152 150,152 150,152 L100,135Z"/>
+			<clipPath id="stars">
+					<use xlink:href="#ratingStar" width='100' height='100' x="0" y="2" />
+			</clipPath>
+			<g>	
+				
+			</g>
+		</defs>
+		<use xlink:href="#ratingStar" x="0" y="0" />
+		<rect x="-250" y="3"  fill='yellow' width="300" height="300" clip-path="url(#stars)"/>
+
+	 
+		
+	</svg>
+	<a href="waves.html" id="startTransition">Transition</a>
 	<div class="background">
 		<div class="column-wrap">
 			<div class="column"></div>
