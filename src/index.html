@@ -15,23 +15,33 @@
 
 <body>
 
-	<svg width='300' height="300">
-		
+	<svg viewBox='0 0 1000 160' height='40' width='200'>
 		<defs>
 				<path stroke='yellow' stroke-width="14" fill="none" id="ratingStar" d="M50,152 C50,152 45,152 45,147 L57,100.5 L27,65 C23,61 27,58 30,58 L75,52 L95,10 C98,5 102,5 105,10 L125,52 L170,58 C174,58 177,61 173,65 L143,100.5 L155,147 C155,152 150,152 150,152 L100,135Z"/>
 			<clipPath id="stars">
-					<use xlink:href="#ratingStar" width='100' height='100' x="0" y="2" />
+					<use xlink:href="#ratingStar" width='200' height='160' x="0" y="0" />
+					<use xlink:href="#ratingStar" width='200' height='160' x="200" y="0" />
+					<use xlink:href="#ratingStar" width='200' height='160' x="400" y="0" />
+					<use xlink:href="#ratingStar" width='200' height='160' x="600" y="0" />
+					<use xlink:href="#ratingStar" width='200' height='160' x="800" y="0" />
 			</clipPath>
-			<g>	
-				
-			</g>
+			 
 		</defs>
-		<use xlink:href="#ratingStar" x="0" y="0" />
-		<rect x="-250" y="3"  fill='yellow' width="300" height="300" clip-path="url(#stars)"/>
-
-	 
 		
+
 	</svg>
+		<svg width="250" height="40"
+			 viewBox="0 0 1000 160">
+			 <use class="star" xlink:href="#ratingStar" x="0" y="0"  />
+			 <use class="star" xlink:href="#ratingStar" x="20%" y="0"  />
+			 <use class="star" xlink:href="#ratingStar" x="40%" y="0"  />
+			 <use class="star" xlink:href="#ratingStar" x="60%" y="0"  />
+			 <use class="star" xlink:href="#ratingStar" x="80%" y="0"  />
+			 <rect id="stars-background" x="0" y="3" clip-path="url(#stars)"/>
+		</svg>
+
+		
+
 	<a href="waves.html" id="startTransition">Transition</a>
 	<div class="background">
 		<div class="column-wrap">
