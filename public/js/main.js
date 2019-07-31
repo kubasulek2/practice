@@ -132,4 +132,46 @@ $(() => {
 		self.addClass('loading');
 	});
 });
+
+let array = [1, 2, 3, 4, 5];
+function reverseArray(arr) {
+	let n = arr.length;
+	for (let i = 0; i < n / 2; i++) {
+		let startIndex = i,
+		    endIndex = n - 1 - i,
+		    temp = arr[startIndex];
+
+		arr[startIndex] = array[endIndex];
+		arr[endIndex] = temp;
+	}
+	return arr;
+}
+const arrayReversed = reverseArray(array);
+console.log(arrayReversed);
+
+let arrayToSort = [10, 7, 2, 5, 8, 4, 2];
+
+function sortArray(arr) {
+
+	let sorted = [],
+	    n = arr.length;
+
+	for (let i = 0; i < n; i++) {
+		let min = arr[0],
+		    minIndex = 0;
+		for (let j = 1; j < arr.length; j++) {
+
+			if (arr[j] < min) {
+				min = arr[j];
+				minIndex = j;
+			}
+		}
+
+		sorted.push(min);
+		arr.splice(minIndex, 1);
+	}
+	return sorted;
+}
+let sortedArray = sortArray(arrayToSort);
+console.log(sortedArray);
 //# sourceMappingURL=main.js.map

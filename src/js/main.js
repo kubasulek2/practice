@@ -3,20 +3,20 @@
 
 let x = {};
 
-Object.defineProperty(x,'readOnly',{
+Object.defineProperty(x, 'readOnly', {
 	value: 2,
 	writable: false,
-	configurable: true,	
+	configurable: true,
 	enumerable: false
-		
-	
+
+
 });
 
-Object.defineProperty(x,'readOnly',{
+Object.defineProperty(x, 'readOnly', {
 	writable: true,
 });
 x.readOnly = 3;
-console.log(x );
+console.log(x);
 // $(() => {
 // 	console.time('load');
 
@@ -111,10 +111,10 @@ console.log(x );
 $(() => {
 	function transition(event) {
 		event.preventDefault();
-		
+
 		const href = $(event.currentTarget).attr('href');
-		
-		
+
+
 		const myfunc = () => window.location = href;
 		const
 			columnEven = $('.column:nth-child(even)'),
@@ -135,7 +135,7 @@ $(() => {
 
 	$('#startTransition').on('click', () => transition(event));
 
-	$('.upload').on('click touch', function(e) {
+	$('.upload').on('click touch', function (e) {
 
 		e.preventDefault();
 
@@ -143,7 +143,56 @@ $(() => {
 		self.addClass('loading');
 	});
 
-	
+
 });
 
-	
+
+let array = [1, 2, 3, 4, 5];
+function reverseArray(arr) {
+	let n = arr.length;
+	for (let i = 0; i < n /2; i++) {
+		let 
+			startIndex = i,
+			endIndex = n -1 - i,
+			temp = arr[startIndex];
+
+		
+		arr[startIndex] = array[endIndex];
+		arr[endIndex] = temp; 
+		
+
+
+	}
+	return arr;
+}
+const arrayReversed = reverseArray(array);
+console.log(arrayReversed);
+
+let arrayToSort = [10,7,2,5,8,4,2];
+
+function sortArray(arr) {
+		
+	let sorted = [],
+		n = arr.length;
+		
+	for (let i = 0; i < n; i++) {
+		let min = arr[0],
+			minIndex = 0;
+		for (let j = 1; j < arr.length; j++) {
+			
+			if (arr[j] < min){
+				min = arr[j];
+				minIndex = j;
+			}
+			
+		}
+		
+		sorted.push(min);
+		arr.splice(minIndex,1);
+		
+	}
+	return sorted;
+}
+let sortedArray = sortArray(arrayToSort);
+console.log(sortedArray);
+
