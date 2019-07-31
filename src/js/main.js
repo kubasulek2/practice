@@ -225,5 +225,70 @@ $(() => {
 		.setPin('#slidein2')
 		.addIndicators() // add indicators (requires plugin)
 		.addTo(controller);	
+	
+	const fromLeftTimeline = new TimelineMax();
+	const fromLeftFrom = TweenMax.from('#left', 1, {
+		x: -500
+	});
+	const fromLeftTo = TweenMax.to('#left', 1, {
+		x: 0
+	});	
+	fromLeftTimeline
+		.add(fromLeftFrom)
+		.add(fromLeftTo);
+	
+	new ScrollMagic.Scene({
+		triggerElement: '#slidein2',
+		offset: 200
+	})
+		.setTween(fromLeftTimeline)
+		.duration(400)
+		//.reverse(false) // uncoment if animation is to happen only one, not back and forth
+		.addIndicators()
+		.addTo(controller);
+
+	// Fade in
+	const fadeInTimeline = new TimelineMax();
+	const fadeInFrom = TweenMax.from('#opacity', 1, {
+		autoAlpha: 0
+	});
+	const fadeInTo = TweenMax.to('#opacity', 1, {
+		autoAlpha: 1
+	});
+	fadeInTimeline
+		.add(fadeInFrom)
+		.add(fadeInTo);
+ 
+	new ScrollMagic.Scene({
+		triggerElement: '#slidein2',
+		offset: 200,
+	})
+		.setTween(fadeInTimeline)
+		.duration(400)
+	//    .reverse(false)
+	//.addIndicators() // add indicators (requires plugin)
+		.addTo(controller);
+ 
+	//Fly in from the left
+	const fromBottomTimeline = new TimelineMax();
+	const fromBottomFrom = TweenMax.from('#bottom', 1, {
+		y: 300
+	});
+	const fromBottomTo = TweenMax.to('#bottom', 1, {
+		y: 0
+	});
+	fromBottomTimeline
+		.add(fromBottomFrom)
+		.add(fromBottomTo);
+ 
+	new ScrollMagic.Scene({
+		triggerElement: '#slidein2',
+		offset: 200,
+	})
+		.setTween(fromBottomTimeline)
+		.duration(400)
+	//    .reverse(false)
+	//.addIndicators() // add indicators (requires plugin)
+		.addTo(controller);	
 });
 
