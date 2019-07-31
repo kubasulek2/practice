@@ -1,20 +1,21 @@
 'use strict';
 
-let x = {};
+// let x = {};
 
-Object.defineProperty(x, 'readOnly', {
-	value: 2,
-	writable: false,
-	configurable: true,
-	enumerable: false
+// Object.defineProperty(x, 'readOnly', {
+// 	value: 2,
+// 	writable: false,
+// 	configurable: true,
+// 	enumerable: false
 
-});
 
-Object.defineProperty(x, 'readOnly', {
-	writable: true
-});
-x.readOnly = 3;
-console.log(x);
+// });
+
+// Object.defineProperty(x, 'readOnly', {
+// 	writable: true,
+// });
+// x.readOnly = 3;
+// console.log(x);
 // $(() => {
 // 	console.time('load');
 
@@ -106,72 +107,115 @@ console.log(x);
 // 	TweenMax.to('.cogRight', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // 	TweenMax.to('.cogLeft', 6, {rotation: 360, repeat: -1 , ease: Power0.easeNone });
 // });	
+// $(() => {
+// 	function transition(event) {
+// 		event.preventDefault();
+
+// 		const href = $(event.currentTarget).attr('href');
+
+
+// 		const myfunc = () => window.location = href;
+// 		const
+// 			columnEven = $('.column:nth-child(even)'),
+// 			columnOdd = $('.column:nth-child(odd)'),
+// 			columnWrapper = $('.column-wrap'),
+// 			background = $('.background'),
+// 			tm = new TimelineMax();
+
+// 		tm
+// 			.to(background, .5, { y: 0, opacity: 1 })
+// 			.to(columnWrapper, .6, { rotationZ: 0 }, 'synchro')
+// 			.to(columnEven, .6, { width: 0 }, 'synchro')
+// 			.to(columnOdd, .6, { width: '12.5%' }, 'synchro')
+// 			.set(columnWrapper, { background: '#599193' })
+// 			.add(myfunc);
+
+// 	}
+
+// 	$('#startTransition').on('click', () => transition(event));
+
+// 	$('.upload').on('click touch', function (e) {
+
+// 		e.preventDefault();
+
+// 		const self = $(this);
+// 		self.addClass('loading');
+// 	});
+
+
+// });
+
+
+// let array = [1, 2, 3, 4, 5];
+// function reverseArray(arr) {
+// 	let n = arr.length;
+// 	for (let i = 0; i < n /2; i++) {
+// 		let 
+// 			startIndex = i,
+// 			endIndex = n -1 - i,
+// 			temp = arr[startIndex];
+
+
+// 		arr[startIndex] = array[endIndex];
+// 		arr[endIndex] = temp; 
+
+
+// 	}
+// 	return arr;
+// }
+// const arrayReversed = reverseArray(array);
+// console.log(arrayReversed);
+
+// let arrayToSort = [10,7,2,5,8,4,2];
+
+// function sortArray(arr) {
+
+// 	let sorted = [],
+// 		n = arr.length;
+
+// 	for (let i = 0; i < n; i++) {
+// 		let min = arr[0],
+// 			minIndex = 0;
+// 		for (let j = 1; j < arr.length; j++) {
+
+// 			if (arr[j] < min){
+// 				min = arr[j];
+// 				minIndex = j;
+// 			}
+
+// 		}
+
+// 		sorted.push(min);
+// 		arr.splice(minIndex,1);
+
+// 	}
+// 	return sorted;
+// }
+// let sortedArray = sortArray(arrayToSort);
+// console.log(sortedArray);
+
 $(() => {
-	function transition(event) {
-		event.preventDefault();
+	const controller = new ScrollMagic.Controller();
+	new ScrollMagic.Scene({
+		triggerElement: '#parallax',
+		triggerHook: 'onEnter'
+	}).duration('200%').setTween('#parallax', {
+		backgroundPosition: '50% 100%',
+		ease: Linear.easeNone
+	})
+	//.addIndicators() // for debugging purposes
+	.addTo(controller);
 
-		const href = $(event.currentTarget).attr('href');
+	new ScrollMagic.Scene({
+		triggerElement: '#slidein',
+		triggerHook: 'onLeave'
+	}).setPin('#slidein').addIndicators() // add indicators (requires plugin)
+	.addTo(controller);
 
-		const myfunc = () => window.location = href;
-		const columnEven = $('.column:nth-child(even)'),
-		      columnOdd = $('.column:nth-child(odd)'),
-		      columnWrapper = $('.column-wrap'),
-		      background = $('.background'),
-		      tm = new TimelineMax();
-
-		tm.to(background, .5, { y: 0, opacity: 1 }).to(columnWrapper, .6, { rotationZ: 0 }, 'synchro').to(columnEven, .6, { width: 0 }, 'synchro').to(columnOdd, .6, { width: '12.5%' }, 'synchro').set(columnWrapper, { background: '#599193' }).add(myfunc);
-	}
-
-	$('#startTransition').on('click', () => transition(event));
-
-	$('.upload').on('click touch', function (e) {
-
-		e.preventDefault();
-
-		const self = $(this);
-		self.addClass('loading');
-	});
+	new ScrollMagic.Scene({
+		triggerElement: '#slidein2',
+		triggerHook: 'onLeave'
+	}).setPin('#slidein2').addIndicators() // add indicators (requires plugin)
+	.addTo(controller);
 });
-
-let array = [1, 2, 3, 4, 5];
-function reverseArray(arr) {
-	let n = arr.length;
-	for (let i = 0; i < n / 2; i++) {
-		let startIndex = i,
-		    endIndex = n - 1 - i,
-		    temp = arr[startIndex];
-
-		arr[startIndex] = array[endIndex];
-		arr[endIndex] = temp;
-	}
-	return arr;
-}
-const arrayReversed = reverseArray(array);
-console.log(arrayReversed);
-
-let arrayToSort = [10, 7, 2, 5, 8, 4, 2];
-
-function sortArray(arr) {
-
-	let sorted = [],
-	    n = arr.length;
-
-	for (let i = 0; i < n; i++) {
-		let min = arr[0],
-		    minIndex = 0;
-		for (let j = 1; j < arr.length; j++) {
-
-			if (arr[j] < min) {
-				min = arr[j];
-				minIndex = j;
-			}
-		}
-
-		sorted.push(min);
-		arr.splice(minIndex, 1);
-	}
-	return sorted;
-}
-let sortedArray = sortArray(arrayToSort);
-console.log(sortedArray);
 //# sourceMappingURL=main.js.map
