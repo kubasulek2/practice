@@ -200,14 +200,14 @@ $(() => {
 	const controller = new ScrollMagic.Controller();
 	new ScrollMagic.Scene({
 		triggerElement: '#parallax',
-		triggerHook: 'onEnter',
+		triggerHook: 1,
 	})
 		.duration('200%')
 		.setTween('#parallax', {
-			backgroundPosition: '50% 100%',
+			y: '-30%',
 			ease: Linear.easeNone
 		})
-	//.addIndicators() // for debugging purposes
+		.addIndicators() // for debugging purposes
 		.addTo(controller);
 
 	new ScrollMagic.Scene({
