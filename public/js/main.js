@@ -199,10 +199,10 @@ $(() => {
 	new ScrollMagic.Scene({
 		triggerElement: '#parallax',
 		triggerHook: 1
-	}).duration('200%').setTween('#parallax', {
-		y: '-30%',
+	}).duration('200%').setTween(TweenMax.from('#parallax', 1, {
+		y: '-50%',
 		ease: Linear.easeNone
-	}).addIndicators() // for debugging purposes
+	})).addIndicators() // for debugging purposes
 	.addTo(controller);
 
 	new ScrollMagic.Scene({

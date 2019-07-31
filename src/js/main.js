@@ -203,10 +203,10 @@ $(() => {
 		triggerHook: 1,
 	})
 		.duration('200%')
-		.setTween('#parallax', {
-			y: '-30%',
+		.setTween( TweenMax.from('#parallax', 1, {
+			y: '-50%',
 			ease: Linear.easeNone
-		})
+		}))
 		.addIndicators() // for debugging purposes
 		.addTo(controller);
 
