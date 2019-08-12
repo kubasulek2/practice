@@ -449,5 +449,5 @@ const binarySort = arr => {
 };
 
 const binarySorted = binarySort(binaryArray);
-//console.log(binarySorted);
+console.log(binarySorted);
 //# sourceMappingURL=main.js.map
