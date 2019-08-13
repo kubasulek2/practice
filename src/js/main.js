@@ -462,15 +462,17 @@ console.log(wholeArr);
 const matchingPar = (arr, sum) => {
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = i+1; j < arr.length; j++) {
+			console.log('match n');
+			
 			if (arr[i]+arr[j] === sum) return [arr[i], arr[j]];
 			
 		}
 	}
 	return false;
 };
-const arr3 = [1,2,3,4,5];
+const arr3 = [5,2,3,4,1];
 
-console.log(matchingPar(arr3,5));
+console.log(matchingPar(arr3,9));
 
 
 
@@ -494,6 +496,8 @@ const binarySort = arr => {
 };
 
 const binarySorted = binarySort(binaryArray);
-//console.log(binarySorted);
+console.log(binarySorted);
+
+// delivery
 
 
